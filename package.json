@@ -1,0 +1,55 @@
+{
+  "name": "@truestamp/truestamp",
+  "version": "1.0.0",
+  "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
+  "description": "A tiny UMD and CommonJS client for the Truestamp API written in Typescript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/truestamp/truestamp-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/truestamp/truestamp-js/issues"
+  },
+  "homepage": "https://github.com/truestamp/truestamp-js",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "unpkg": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd",
+    "build-node": "microbundle --target=node --tsconfig tsconfig.json --format cjs",
+    "build": "rm -rf dist && npm run build-web && npm run build-node",
+    "dev": "microbundle watch --tsconfig tsconfig.json",
+    "test": "jest --config jest.config.ts --detectOpenHandles",
+    "release": "npm publish --access public --dry-run"
+  },
+  "keywords": [
+    "Truestamp",
+    "javascript",
+    "typescript",
+    "api",
+    "client",
+    "universal",
+    "UMD",
+    "CommonJS",
+    "Node.js"
+  ],
+  "license": "MIT",
+  "files": [
+    "src",
+    "dist",
+    "examples"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "isomorphic-unfetch": "^3.1.0",
+    "jest": "^26.6.3",
+    "microbundle": "^0.13.0",
+    "nock": "^13.0.5",
+    "querystringify": "^2.2.0",
+    "ts-node": "^9.1.1"
+  }
+}

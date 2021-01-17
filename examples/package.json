@@ -1,0 +1,11 @@
+{
+  "name": "truestamp-example",
+  "version": "1.0.0",
+  "description": "Example project with Truestamp API library",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Truestamp <support@truestamp.com>",
+  "license": "MIT"
+}
