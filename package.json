@@ -1,6 +1,6 @@
 {
-  "name": "@truestamp/truestamp",
-  "version": "1.0.0",
+  "name": "@truestamp/truestamp-js",
+  "version": "0.0.1",
   "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
   "description": "A tiny UMD and CommonJS client for the Truestamp API written in Typescript",
   "repository": {
@@ -23,7 +23,7 @@
     "build": "rm -rf dist && npm run build-web && npm run build-node",
     "dev": "microbundle watch --tsconfig tsconfig.json",
     "test": "jest --config jest.config.ts --detectOpenHandles",
-    "release": "npm publish --access public --dry-run"
+    "release": "npm publish --access public"
   },
   "keywords": [
     "Truestamp",
