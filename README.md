@@ -2,6 +2,7 @@
 
 A tiny UMD and CommonJS client for the Truestamp API written in Typescript.
 
+![main workflows](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg)
 ![@truestamp/truestamp-js](https://img.shields.io/npm/v/@truestamp/truestamp-js)
 ![gzip size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=gzip&max=25000&softmax=15000)
 ![brotli size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=brotli&max=25000&softmax=15000)
