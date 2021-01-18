@@ -1,6 +1,6 @@
 {
   "name": "@truestamp/truestamp-js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
   "description": "A tiny UMD and CommonJS client for the Truestamp API written in Typescript",
   "repository": {

@@ -20,6 +20,12 @@ jobs:
       - run: npm test
         env:
           CI: true
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: |
+            dist
 
   publish:
     if: github.ref == 'refs/heads/main'
@@ -30,10 +36,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
       - name: Publish
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-          npm publish --ignore-scripts
+          npm publish --ignore-scripts --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
