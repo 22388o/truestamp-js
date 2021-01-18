@@ -1,6 +1,6 @@
 {
   "name": "@truestamp/truestamp-js",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
   "description": "A tiny UMD and CommonJS client for the Truestamp API written in Typescript",
   "repository": {
@@ -18,7 +18,7 @@
   "module": "dist/index.m.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd",
+    "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd --name Truestamp",
     "build-node": "microbundle --target=node --tsconfig tsconfig.json --format cjs",
     "build": "rm -rf dist && npm run build-web && npm run build-node",
     "dev": "microbundle watch --tsconfig tsconfig.json",
