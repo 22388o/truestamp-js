@@ -1,11 +1,13 @@
-# truestamp-js
+# @truestamp/truestamp-js
 
-A tiny UMD and CommonJS client for the Truestamp API written in Typescript.
+[![workflows](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg?branch=main)](https://github.com/truestamp/truestamp-js/workflows)
+[![@truestamp/truestamp-js](https://img.shields.io/npm/v/@truestamp/truestamp-js)](https://www.npmjs.com/package/@truestamp/truestamp-js)
+[![gzip size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=gzip&max=25000&softmax=15000)](https://unpkg.com/browse/@truestamp/truestamp-js/)
+[![brotli size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=brotli&max=25000&softmax=15000)](https://unpkg.com/browse/@truestamp/truestamp-js/)
 
-![main (https://github.com/truestamp/truestamp-js/workflows)](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg?branch=main)
-![@truestamp/truestamp-js (https://www.npmjs.com/package/@truestamp/truestamp-js)](https://img.shields.io/npm/v/@truestamp/truestamp-js)
-![gzip size (https://unpkg.com/browse/@truestamp/truestamp-js/)](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=gzip&max=25000&softmax=15000)
-![brotli size (https://unpkg.com/browse/@truestamp/truestamp-js/)](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=brotli&max=25000&softmax=15000)
+## Description
+
+A tiny JavaScript client for the Truestamp API written in Typescript. The library is available in both UMD (browser), and CommonJS (Node.js) forms.
 
 ## ALPHA
 
@@ -13,17 +15,11 @@ This software is still in development and is intended to be used by developers i
 
 ## Features
 
-- Tiny browser library size
+- Tiny library size
 - No external dependencies
-- Works in Node.js and in the Browser
+- Works in both Node.js and the browser
 - Built-in Typescript support
 - [UNPKG CDN](https://unpkg.com/browse/@truestamp/truestamp-js/) support
-
-## Installation
-
-```bash
-npm i @truestamp/truestamp-js
-```
 
 ## API Documentation
 
@@ -31,11 +27,17 @@ npm i @truestamp/truestamp-js
 
 ## Usage
 
-Here are some simple examples of the most common forms of usage. Additional examples can be found in the `/examples` dir.
+Here are some simple examples of the most common forms of usage. Additional examples may be found in the `/examples` dir.
 
-### Node.js Usage
+### With Node.js (CommonJS)
 
-Import the `@truestamp/truestamp-js` module in your project and initialize it with your [apiKey](https://app.truestamp.com).
+#### Installation
+
+```bash
+npm i @truestamp/truestamp-js
+```
+
+Require the `@truestamp/truestamp-js` module in your project and initialize it with your [apiKey](https://app.truestamp.com).
 
 #### Sample JavaScript
 
@@ -49,7 +51,7 @@ TruestampClient.getHeartbeat()
   .catch((err) => console.log(err))
 ```
 
-### Browser Usage
+### In the Browser (UMD)
 
 Warning: Do not expose your Truestamp private API key in code shipped to browser clients over the web!
 
@@ -59,7 +61,13 @@ You can use a `<script>` tag in the browser to load the `latest` version of the 
 <script src="https://unpkg.com/@truestamp/truestamp-js"></script>
 ```
 
-The list of files and versions served by the CDN can be viewed at [https://unpkg.com/@truestamp/truestamp-js/](https://unpkg.com/@truestamp/truestamp-js/)
+You can pin to a specific version of the library also. e.g.
+
+```html
+<script src="https://unpkg.com/browse/@truestamp/truestamp-js@0.0.7"></script>
+```
+
+The list of files available for each version can be browsed at [UNPKG](https://unpkg.com/@truestamp/truestamp-js/)
 
 #### Sample HTML
 
