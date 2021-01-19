@@ -2,10 +2,10 @@
 
 A tiny UMD and CommonJS client for the Truestamp API written in Typescript.
 
-![main](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg?branch=main)
-![@truestamp/truestamp-js](https://img.shields.io/npm/v/@truestamp/truestamp-js)
-![gzip size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=gzip&max=25000&softmax=15000)
-![brotli size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=brotli&max=25000&softmax=15000)
+![main (https://github.com/truestamp/truestamp-js/workflows)](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg?branch=main)
+![@truestamp/truestamp-js (https://www.npmjs.com/package/@truestamp/truestamp-js)](https://img.shields.io/npm/v/@truestamp/truestamp-js)
+![gzip size (https://unpkg.com/browse/@truestamp/truestamp-js/)](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=gzip&max=25000&softmax=15000)
+![brotli size (https://unpkg.com/browse/@truestamp/truestamp-js/)](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.3/dist/index.js?compression=brotli&max=25000&softmax=15000)
 
 ## ALPHA
 
@@ -17,7 +17,7 @@ This software is still in development and is intended to be used by developers i
 - No external dependencies
 - Works in Node.js and in the Browser
 - Built-in Typescript support
-- UNPKG CDN support
+- [UNPKG CDN](https://unpkg.com/browse/@truestamp/truestamp-js/) support
 
 ## Installation
 
