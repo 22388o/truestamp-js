@@ -1,6 +1,6 @@
 // import qs from 'querystringify'
 import { HeartbeatStatus } from './types'
-import { Base, Pagination } from '../base'
+import { Base } from '../base'
 
 const resourceName = 'heartbeat'
 

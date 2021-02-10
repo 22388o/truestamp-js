@@ -1,6 +1,6 @@
 {
   "name": "@truestamp/truestamp-js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
   "description": "A tiny UMD and CommonJS client for the Truestamp API written in Typescript",
   "repository": {
@@ -43,14 +43,15 @@
     "dist",
     "examples"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.20",
+    "@types/querystringify": "^2.0.0",
     "isomorphic-unfetch": "^3.1.0",
     "jest": "^26.6.3",
     "microbundle": "^0.13.0",
-    "nock": "^13.0.5",
+    "nock": "^13.0.7",
     "querystringify": "^2.2.0",
     "ts-node": "^9.1.1"
-  }
+  },
+  "dependencies": {}
 }

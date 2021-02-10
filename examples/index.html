@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Truestamp Example Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Truestamp Example Client</h1>
+
+    <!-- AlpineJS gives us some easy interactivity -->
+    <!-- See : https://github.com/alpinejs/alpine/ -->
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"
+      defer
+    ></script>
+
+    <!-- Helper lib for generating hashes -->
+    <script src="https://cdn.jsdelivr.net/npm/jshashes@1.0.8/hashes.min.js"></script>
+
+    <!-- TRUESTAMP : Choose One -->
+
+    <!-- 1. load locally for dev -->
+    <script src="../dist/index.umd.js"></script>
+
+    <!-- 2. load from JSDELIVR CDN latest (using latest not recommended for production use) -->
+    <!-- See : https://www.jsdelivr.com/package/npm/@truestamp/truestamp-js -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@truestamp/truestamp-js@latest/dist/index.umd.min.js"></script> -->
+
+    <!-- 3. load from UNPKG CDN latest (using latest not recommended for production use) -->
+    <!-- <script src="https://unpkg.com/@truestamp/truestamp-js"></script> -->
+
+    <!-- NO EDITING BELOW HERE IS REQUIRED -->
+
+    <div x-data="loadLocalData()" x-init="clientFactory()">
+      <h2>Config</h2>
+
+      <!-- Generate a new client with any updates to the apiKey -->
+      <p>Client : apiKey</p>
+      <input
+        type="text"
+        x-model="apiKey"
+        x-on:input.debounce.750ms="clientFactory()"
+      />
+
+      <!-- Generate a new client with any updates to the basePath -->
+      <p>Client : basePath</p>
+
+      <select x-model="basePath" x-on:input.debounce.750ms="clientFactory()">
+        <option value="https://dev-api.truestamp.com/v1/">
+          https://dev-api.truestamp.com/v1/
+        </option>
+        <option value="https://staging-api.truestamp.com/v1/">
+          https://staging-api.truestamp.com/v1/
+        </option>
+        <option value="https://api.truestamp.com/v1/">
+          https://api.truestamp.com/v1/
+        </option>
+      </select>
+
+      <!-- heartbeat -->
+      <h2>GET /heartbeat</h2>
+
+      <div>
+        <button type="submit" @click="getHeartbeat()">Get Heartbeat</button>
+        <pre x-show="getHeartbeatResp !== null"><code x-text="JSON.stringify(getHeartbeatResp, null, 4)"></code></pre>
+      </div>
+
+      <!-- documents -->
+      <h2>POST /documents</h2>
+
+      <h3>Text</h3>
+      <p>Enter some text to hash, which will be auto-submitted.</p>
+
+      <textarea
+        rows="4"
+        cols="50"
+        x-model="createDocumentText"
+        x-on:input.debounce.25ms="createDocumentUpdateHash()"
+      /></textarea>
+
+      <div x-show="createDocumentHash !== null">
+        <h3>SHA-256(Text)</h3>
+        <pre><code x-text="createDocumentHash"></code></pre>
+      </div>
+
+      <!--
+      <button type="submit" @click="createDocument()">Make request</button>
+      -->
+
+      <div x-show="createDocumentResp !== null">
+        <h3>POST /documents API Response</h3>
+        <div>
+          <pre><code x-text="JSON.stringify(createDocumentResp, null, 4)"></code></pre>
+        </div>
+      </div>
+
+      <script>
+        function loadLocalData() {
+          return {
+            apiKey: "",
+            basePath: "",
+            client: new Truestamp({ apiKey: this.apiKey }),
+            getHeartbeatResp: null,
+            createDocumentText: null,
+            createDocumentHash: null,
+            createDocumentResp: null,
+            fetchConfig() {
+              fetch('config.json')
+              .then(res => {
+                return res.json()
+              })
+              .then(data => {
+                this.apiKey = data.apiKey
+                this.basePath = data.basePath
+              })
+            },
+            clientFactory() {
+              this.fetchConfig()
+              let c = new Truestamp({
+                  apiKey: this.apiKey,
+                  basePath: this.basePath,
+              })
+              console.log("client", c)
+              this.client = c
+            },
+            getHeartbeat() {
+              this.clientFactory()
+              this.client
+                .getHeartbeat()
+                .then(
+                  (data) => (console.log(data), (this.getHeartbeatResp = data))
+                )
+                .catch((error) => {
+                  console.error(error), (this.getHeartbeatResp = error.message)
+                })
+            },
+            createDocumentUpdateHash() {
+              if (this.createDocumentText && this.createDocumentText !== "") {
+                var SHA256 = new Hashes.SHA256().hex(this.createDocumentText)
+                console.log(SHA256)
+                this.createDocumentHash = SHA256
+                this.createDocument()
+              } else {
+                this.createDocumentHash = null
+                this.createDocumentResp = null
+              }
+            },
+            createDocument() {
+              this.clientFactory()
+              this.client
+                .createDocument({
+                  hash: this.createDocumentHash,
+                  type: 'sha2-256'
+                })
+                .then(
+                  (data) => (
+                    console.log(data), (this.createDocumentResp = data)
+                  )
+                )
+                .catch((error) => {
+                  console.error(error),
+                    (this.createDocumentResp = error.message)
+                })
+            },
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>

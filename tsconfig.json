@@ -1,10 +1,14 @@
 {
+    "compilerOptions": {
+        "strict": true,
+    },
     "include": [
         "src/**/*"
     ],
     "exclude": [
         "node_modules",
-        "**/*.test.ts"
+        "**/*.test.ts",
+        "examples/config.json"
     ],
     "module": "ESNext",
     "target": "ESNext"

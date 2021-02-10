@@ -34,9 +34,15 @@ export abstract class Base {
 
         return fetch(url, config).then(r => {
             if (r.ok) {
-                return r.json()
+                // Handle HTTP 204 No Content response
+                if (r.status === 204) {
+                    return null
+                } else {
+                    return r.json()
+                }
             }
-            throw new Error(r.statusText)
+
+            throw new Error(`${r.status} : ${r.statusText}`)
         })
     }
 }
