@@ -1,46 +1,57 @@
-name: main
-
-on: [push]
-
+on: [push, pull_request]
+name: Build, Test and maybe Publish
 jobs:
-  build:
+  test:
+    name: Build & Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12.x, 14.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Build on Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci --ignore-scripts
-      - run: npm run build --if-present
-        name: Build
-      - run: npm test
+      - name: Cache node_modules
+        id: cache-modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ matrix.node-version }}-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+      - name: CI Install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm ci --ignore-scripts
+      - name: Build
+        run: npm run build --if-present
+      - name: Test
+        run: npm test
         env:
           CI: true
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: |
-            dist
 
   publish:
-    if: github.ref == 'refs/heads/main'
-    needs: build
+    name: Publish
+    needs: test
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v2
-      - name: Publish
-        run: |
-          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-          npm publish --ignore-scripts --access public
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - uses: actions/checkout@v2
+    - name: Cache node_modules
+      id: cache-modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: 12.x-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+    - name: CI Install
+      if: steps.cache-modules.outputs.cache-hit != 'true'
+      run: npm ci --ignore-scripts
+    - name: Build
+      run: npm run build --if-present
+    - name: Test
+      run: npm test
+
+    - name: Publish
+      uses: mikeal/merge-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

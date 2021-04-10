@@ -23,8 +23,7 @@
     "build-node": "microbundle --target=node --tsconfig tsconfig.json --format cjs",
     "build": "rm -rf dist && npm run build-web && npm run build-node",
     "dev": "microbundle watch --tsconfig tsconfig.json",
-    "test": "jest --config jest.config.ts --detectOpenHandles",
-    "release": "npm publish --access public"
+    "test": "jest --config jest.config.ts --detectOpenHandles"
   },
   "keywords": [
     "Truestamp",
