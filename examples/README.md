@@ -7,7 +7,7 @@ Create the file `examples/config.js` to match the following structure. You'll ne
 ```
 {
     "apiKey": "...",
-    "basePath": "https://api.truestamp.com/v1/"
+    "apiBaseUrl": "https://api.truestamp.com/v1/"
 }
 ```
 

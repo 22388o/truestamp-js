@@ -8,14 +8,14 @@ const Truestamp = require("../dist/index.js")
 // Create the 'config.json' file, with the structure shown below to get started.
 // {
 //   "apiKey": "...",
-//   "basePath": "https://api.truestamp.com/v1/"
+//   "apiBaseUrl": "https://api.truestamp.com/v1/"
 // }
 const config = require("./config.json")
 
 // Instantiate and configure a client object 't'
 const t = new Truestamp({
   apiKey: config.apiKey,
-  basePath: config.basePath,
+  apiBaseUrl: config.apiBaseUrl,
 })
 
 async function asyncCall() {

@@ -43,10 +43,10 @@
         x-on:input.debounce.750ms="clientFactory()"
       />
 
-      <!-- Generate a new client with any updates to the basePath -->
-      <p>Client : basePath</p>
+      <!-- Generate a new client with any updates to the apiBaseUrl -->
+      <p>Client : apiBaseUrl</p>
 
-      <select x-model="basePath" x-on:input.debounce.750ms="clientFactory()">
+      <select x-model="apiBaseUrl" x-on:input.debounce.750ms="clientFactory()">
         <option value="https://dev-api.truestamp.com/v1/">
           https://dev-api.truestamp.com/v1/
         </option>
@@ -99,7 +99,7 @@
         function loadLocalData() {
           return {
             apiKey: "",
-            basePath: "",
+            apiBaseUrl: "",
             client: new Truestamp({ apiKey: this.apiKey }),
             getHeartbeatResp: null,
             createDocumentText: null,
@@ -112,14 +112,14 @@
               })
               .then(data => {
                 this.apiKey = data.apiKey
-                this.basePath = data.basePath
+                this.apiBaseUrl = data.apiBaseUrl
               })
             },
             clientFactory() {
               this.fetchConfig()
               let c = new Truestamp({
                   apiKey: this.apiKey,
-                  basePath: this.basePath,
+                  apiBaseUrl: this.apiBaseUrl,
               })
               console.log("client", c)
               this.client = c

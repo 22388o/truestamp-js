@@ -2,7 +2,7 @@ import fetch from 'isomorphic-unfetch'
 
 type Config = {
     apiKey: string,
-    basePath?: string,
+    apiBaseUrl?: string,
 }
 
 export type Pagination = {
@@ -12,15 +12,15 @@ export type Pagination = {
 
 export abstract class Base {
     private apiKey: string
-    private basePath: string
+    private apiBaseUrl: string
 
     constructor(config: Config) {
         this.apiKey = config.apiKey
-        this.basePath = config.basePath || 'https://api.truestamp.com/v1/'
+        this.apiBaseUrl = config.apiBaseUrl || 'https://api.truestamp.com/v1/'
     }
     
     protected request<T> (endpoint: string, options?: RequestInit): Promise<T> {
-        const url = this.basePath + endpoint
+        const url = this.apiBaseUrl + endpoint
         const headers = {
             'Authorization': "Bearer " + this.apiKey,
             'Content-type': 'application/json',
