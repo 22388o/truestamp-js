@@ -75,6 +75,16 @@ The list of files available for each version can be browsed at [UNPKG](https://u
 
 There are simple working examples of the usage of this library in the [/examples](/examples) directory. Checkout the [README.md](examples/README.md) for usage instructions.
 
+## Development & Release
+
+Pushes and pull requests to the `main` branch will be automatically tested and pushed to npmjs.org using Github Actions. Only passing tests will result in a new release.
+
+Commit messages with leading `BREAKING CHANGE` will result in major version bump.
+
+Commit messages with leading `feat` or `feature` will result in minor version bump.
+
+All other commits will result in a patch version bump only.
+
 ## Thanks
 
 https://github.com/ilyamkin/dev-to-js
