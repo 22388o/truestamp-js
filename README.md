@@ -87,5 +87,6 @@ All other commits will result in a patch version bump only.
 
 ## Thanks
 
-https://github.com/ilyamkin/dev-to-js
-https://medium.com/better-programming/how-to-build-an-api-client-library-in-javascript-665df869bdd5
+[https://github.com/ilyamkin/dev-to-js](https://github.com/ilyamkin/dev-to-js)
+
+[https://medium.com/better-programming/how-to-build-an-api-client-library-in-javascript-665df869bdd5](https://medium.com/better-programming/how-to-build-an-api-client-library-in-javascript-665df869bdd5)
