@@ -11,5 +11,6 @@
         "examples/config.json"
     ],
     "module": "ESNext",
-    "target": "ESNext"
+    "target": "ESNext",
+    "declaration": true
 }

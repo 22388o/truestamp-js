@@ -18,16 +18,24 @@
     <!-- Helper lib for generating hashes -->
     <script src="https://cdn.jsdelivr.net/npm/jshashes@1.0.8/hashes.min.js"></script>
 
-    <!-- TRUESTAMP : Choose One -->
+    <!-- TRUESTAMP : Choose One of these loading methods and comment out the others -->
 
-    <!-- 1. load locally for dev -->
-    <script src="../dist/index.umd.js"></script>
+    <!-- load locally for dev -->
+    <script src="../../dist/index.umd.js"></script>
 
-    <!-- 2. load from JSDELIVR CDN latest (using latest not recommended for production use) -->
+    <!-- load from SkyPack CDN latest (using latest not recommended for production use) -->
+    <!-- Docs : https://www.skypack.dev/view/@truestamp/truestamp-js -->
+    <!--
+    <script type="module">
+      import Truestamp from 'https://cdn.skypack.dev/@truestamp/truestamp-js';
+    </script>
+    -->
+
+    <!-- load from JSDELIVR CDN latest (using latest not recommended for production use) -->
     <!-- See : https://www.jsdelivr.com/package/npm/@truestamp/truestamp-js -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@truestamp/truestamp-js@latest/dist/index.umd.min.js"></script> -->
 
-    <!-- 3. load from UNPKG CDN latest (using latest not recommended for production use) -->
+    <!-- load from UNPKG CDN latest (using latest not recommended for production use) -->
     <!-- <script src="https://unpkg.com/@truestamp/truestamp-js"></script> -->
 
     <!-- NO EDITING BELOW HERE IS REQUIRED -->
@@ -63,7 +71,9 @@
 
       <div>
         <button type="submit" @click="getHeartbeat()">Get Heartbeat</button>
-        <pre x-show="getHeartbeatResp !== null"><code x-text="JSON.stringify(getHeartbeatResp, null, 4)"></code></pre>
+        <pre
+          x-show="getHeartbeatResp !== null"
+        ><code x-text="JSON.stringify(getHeartbeatResp, null, 4)"></code></pre>
       </div>
 
       <!-- documents -->
@@ -77,7 +87,7 @@
         cols="50"
         x-model="createDocumentText"
         x-on:input.debounce.25ms="createDocumentUpdateHash()"
-      /></textarea>
+      ></textarea>
 
       <div x-show="createDocumentHash !== null">
         <h3>SHA-256(Text)</h3>
@@ -106,20 +116,20 @@
             createDocumentHash: null,
             createDocumentResp: null,
             fetchConfig() {
-              fetch('config.json')
-              .then(res => {
-                return res.json()
-              })
-              .then(data => {
-                this.apiKey = data.apiKey
-                this.apiBaseUrl = data.apiBaseUrl
-              })
+              fetch("../config.json")
+                .then((res) => {
+                  return res.json()
+                })
+                .then((data) => {
+                  this.apiKey = data.apiKey
+                  this.apiBaseUrl = data.apiBaseUrl
+                })
             },
             clientFactory() {
               this.fetchConfig()
               let c = new Truestamp({
-                  apiKey: this.apiKey,
-                  apiBaseUrl: this.apiBaseUrl,
+                apiKey: this.apiKey,
+                apiBaseUrl: this.apiBaseUrl,
               })
               console.log("client", c)
               this.client = c
@@ -151,7 +161,7 @@
               this.client
                 .createDocument({
                   hash: this.createDocumentHash,
-                  type: 'sha2-256'
+                  type: "sha2-256",
                 })
                 .then(
                   (data) => (

@@ -2,35 +2,52 @@
 
 ## Examples Setup
 
-Create the file `examples/config.js` to match the following structure. You'll need an active API key to run these tests.
+For all of the demo's you'll currently need an API key. Create the file `examples/config.json` to match the following JSON structure.
 
-```
+```json
 {
-    "apiKey": "...",
-    "apiBaseUrl": "https://api.truestamp.com/v1/"
+  "apiKey": "..."
 }
 ```
 
 ## Browser
 
-This setup assumes can run the [http-server](https://github.com/http-party/http-server) package locally using one of the provided installation methods. You can use any similar local HTTP server that provides automatic `CORS` support.
+To test out the browser example locally you'll need a simple local HTTP server that supports CORS. An easy local server to try without any installation is '[serve](https://github.com/vercel/serve)'.
 
 ```sh
-# Install the server
-brew install http-server
+❯ npx serve --cors
 
-# From the root of this repository (not in the `examples` dir) run:
-http-server --cors
+   ┌──────────────────────────────────────────────────┐
+   │                                                  │
+   │   Serving!                                       │
+   │                                                  │
+   │   - Local:            http://localhost:5000      │
+   │   - On Your Network:  http://192.168.7.55:5000   │
+   │                                                  │
+   │   Copied local address to clipboard!             │
+   │                                                  │
+   └──────────────────────────────────────────────────┘
 ```
 
-- Open [http://127.0.0.1:8080/examples/](http://127.0.0.1:8080/examples/)
-- paste a copy of your Truestamp API key into the `apiKey` field at the top of the page and explore the examples.
+Once the server is running open [http://127.0.0.1:5000/examples/web](http://127.0.0.1:5000/examples/web). This example code implements a pared down app the utilizes [alpine.js](https://github.com/alpinejs/alpine/) to provide some interactivity.
+
+## Deno
+
+The `deno/index.ts` file demonstrates some simple usage.
+
+You'll need to first install [Deno](https://deno.land/)
+
+```sh
+cd examples/deno
+deno run --allow-net index.ts
+```
 
 ## Node.js
 
-The `example.js` file contains some simple sample usage.
+The `node/index.js` file demonstrates some simple usage.
 
-```
-cd examples/
-node ./example.js
+```sh
+cd examples/node
+npm install
+npm run example
 ```

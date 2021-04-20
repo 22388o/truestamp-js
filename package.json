@@ -1,8 +1,8 @@
 {
   "name": "@truestamp/truestamp-js",
-  "version": "0.0.9",
+  "version": "0.0.12",
   "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
-  "description": "A tiny UMD and CommonJS client for the Truestamp API written in Typescript",
+  "description": "A tiny zero-dependency Truestamp SDK written in Typescript that supports ES Modules, UMD, and CommonJS loaders and runs in Deno, Node.js, and modern browsers",
   "repository": {
     "type": "git",
     "url": "https://github.com/truestamp/truestamp-js.git"
@@ -17,11 +17,17 @@
   "unpkg": "dist/index.umd.js",
   "jsdelivr": "dist/index.umd.js",
   "module": "dist/index.m.js",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.m.js"
+  },
   "types": "dist/index.d.ts",
   "scripts": {
+    "clean": "rimraf dist",
+    "package-check": "npx package-check",
     "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd --name Truestamp",
     "build-node": "microbundle --target=node --tsconfig tsconfig.json --format cjs",
-    "build": "rm -rf dist && npm run build-web && npm run build-node",
+    "build": "npm run package-check && npm run clean && npm run build-web && npm run build-node && npm run test",
     "dev": "microbundle watch --tsconfig tsconfig.json",
     "test": "jest --config jest.config.ts --detectOpenHandles"
   },
@@ -32,9 +38,12 @@
     "api",
     "client",
     "universal",
+    "ES Modules",
     "UMD",
     "CommonJS",
-    "Node.js"
+    "Deno",
+    "Node.js",
+    "Browser"
   ],
   "license": "MIT",
   "files": [
@@ -43,6 +52,7 @@
     "examples"
   ],
   "devDependencies": {
+    "@skypack/package-check": "^0.2.2",
     "@types/jest": "^26.0.22",
     "@types/querystringify": "^2.0.0",
     "isomorphic-unfetch": "^3.1.0",
@@ -50,6 +60,8 @@
     "microbundle": "^0.13.0",
     "nock": "^13.0.11",
     "querystringify": "^2.2.0",
+    "rimraf": "^3.0.2",
+    "serve": "^11.3.2",
     "ts-node": "^9.1.1"
   },
   "dependencies": {}

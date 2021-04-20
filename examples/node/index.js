@@ -3,14 +3,14 @@
 
 const Hashes = require("jshashes")
 
-const Truestamp = require("../dist/index.js")
+const Truestamp = require("../../dist/index.js")
 
 // Create the 'config.json' file, with the structure shown below to get started.
 // {
 //   "apiKey": "...",
 //   "apiBaseUrl": "https://api.truestamp.com/v1/"
 // }
-const config = require("./config.json")
+const config = require("../config.json")
 
 // Instantiate and configure a client object 't'
 const t = new Truestamp({

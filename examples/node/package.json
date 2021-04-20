@@ -4,12 +4,12 @@
   "description": "Example project with Truestamp API library",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "example": "node index.js"
   },
   "author": "Truestamp <support@truestamp.com>",
   "license": "MIT",
   "dependencies": {
-    "@truestamp/truestamp-js": "^0.0.3",
+    "@truestamp/truestamp-js": "^0.0.12",
     "jshashes": "^1.0.8"
   }
 }
