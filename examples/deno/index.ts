@@ -1,4 +1,6 @@
-// Load latest ESM module from SkyPack. You should really use a pinned URL.
+//@ts-nocheck
+
+// Load latest ES Module from SkyPack. You should really use a pinned URL!
 // See : https://docs.skypack.dev/skypack-cdn/code/optimize-for-production
 import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js?dts"
 
