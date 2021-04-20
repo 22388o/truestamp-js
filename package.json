@@ -18,8 +18,12 @@
   "jsdelivr": "dist/index.umd.js",
   "module": "dist/index.m.js",
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.m.js"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.m.js",
+      "node": "./dist/index.js",
+      "default": "./dist/index.m.js"
+    }
   },
   "types": "dist/index.d.ts",
   "scripts": {
