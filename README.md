@@ -1,4 +1,4 @@
-# @truestamp/truestamp-js
+# Truestamp JS
 
 [![@truestamp/truestamp-js](https://snyk.io/advisor/npm-package/@truestamp/truestamp-js/badge.svg)](https://snyk.io/advisor/npm-package/@truestamp/truestamp-js)
 [![actions](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg?branch=main)](https://github.com/truestamp/truestamp-js/actions)
@@ -105,17 +105,15 @@ The list of files available for each version can be browsed at [UNPKG](https://u
 
 ### Example Code
 
-There are working code examples for Deno, Node.js, and Web in the [/examples](/examples) directory. Take a look at the [examples/README.md](examples/README.md) for usage instructions.
+There are working code examples for Deno, Node.js, and the Web in the [/examples](/examples) directory. Take a look at the [examples/README.md](examples/README.md) for usage instructions.
 
-## Development & Release
+## Contributing
 
-Pushes and pull requests to the `main` branch will be automatically tested and pushed to npmjs.org using Github Actions. Only passing tests will result in a new release.
+We'd love you to join our network of contributors. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for help getting started.
 
-Commit messages with leading `BREAKING CHANGE` will result in major version bump.
+## Code of Conduct
 
-Commit messages with leading `feat` or `feature` will result in minor version bump.
-
-All other commits will result in a patch version bump only.
+We expect all members of the community to respect our [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
 
 ## Thanks
 

@@ -1,4 +1,4 @@
-# Truestamp JavaScript SDK Examples
+# Truestamp JS Examples
 
 ## Examples Setup
 
