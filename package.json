@@ -27,6 +27,7 @@
   },
   "types": "dist/index.d.ts",
   "scripts": {
+    "browserlist": "npx browserslist",
     "clean": "rimraf dist",
     "package-check": "npx package-check",
     "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd --name Truestamp",
@@ -68,5 +69,13 @@
     "serve": "^11.3.2",
     "ts-node": "^9.1.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "engines": {
+    "node": ">= 12.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "maintained node versions"
+  ]
 }

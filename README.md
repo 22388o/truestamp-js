@@ -1,7 +1,7 @@
 # @truestamp/truestamp-js
 
+[![@truestamp/truestamp-js](https://snyk.io/advisor/npm-package/@truestamp/truestamp-js/badge.svg)](https://snyk.io/advisor/npm-package/@truestamp/truestamp-js)
 [![actions](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg?branch=main)](https://github.com/truestamp/truestamp-js/actions)
-[![jsdelivr](https://data.jsdelivr.com/v1/package/npm/@truestamp/truestamp-js/badge)](https://www.jsdelivr.com/package/npm/@truestamp/truestamp-js)
 [![@truestamp/truestamp-js](https://img.shields.io/npm/v/@truestamp/truestamp-js)](https://www.npmjs.com/package/@truestamp/truestamp-js)
 [![gzip size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.12/dist/index.js?compression=gzip&max=25000&softmax=15000)](https://unpkg.com/browse/@truestamp/truestamp-js/)
 [![brotli size](https://img.badgesize.io/https://unpkg.com/@truestamp/truestamp-js@0.0.12/dist/index.js?compression=brotli&max=25000&softmax=15000)](https://unpkg.com/browse/@truestamp/truestamp-js/)
