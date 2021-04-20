@@ -1,9 +1,10 @@
 // Truestamp library usage demo : Node.js async/await
-// Usage: `node ./example-await.js`
+// Usage: `node ./index.js`
 
 const Hashes = require("jshashes")
 
-const Truestamp = require("../../dist/index.js")
+// const Truestamp = require("../../dist/index.js")
+const Truestamp = require("@truestamp/truestamp-js")
 
 // Create the 'config.json' file, with the structure shown below to get started.
 // {
