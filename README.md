@@ -89,7 +89,7 @@ console.log(hb)
 
 Warning: Do not expose your Truestamp private API key in code shipped to browser clients over the web!
 
-You can use a `<script>` tag in the browser to load a specific version of the library from several supported CDN's. Replace the pinned version in the link with the version you use in your app. You can use ESM modules or the UMD build for browser support.
+You can use a `<script>` tag in the browser to load a specific version of the library from several supported CDN's. Replace the pinned version in the link with the version you use in your app. You can use the UMD build for browser support.
 
 ```html
 <!-- JSDELIVR UMD -->
