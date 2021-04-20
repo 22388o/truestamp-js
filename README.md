@@ -8,7 +8,7 @@
 
 ## Description
 
-A tiny JavaScript client for the Truestamp API written in Typescript. The library is available in both UMD (browser), and CommonJS (Node.js) forms.
+A tiny zero-dependency Truestamp SDK written in Typescript that supports ES Modules, UMD, and CommonJS loaders and runs in Deno, Node.js, and modern browsers.
 
 ## EXPERIMENTAL
 
