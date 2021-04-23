@@ -7,7 +7,7 @@
 // import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js?dts"
 
 // Or, load from local lib in development
-import Truestamp from "../../dist/index.m.js"
+import Truestamp from "../../dist/truestamp.module.js"
 
 // See : https://deno.land/std@0.94.0/hash
 import { createHash } from "https://deno.land/std@0.94.0/hash/mod.ts"

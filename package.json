@@ -1,5 +1,6 @@
 {
   "name": "@truestamp/truestamp-js",
+  "amdName": "Truestamp",
   "version": "0.0.12",
   "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
   "description": "A tiny zero-dependency Truestamp SDK written in Typescript that supports ES Modules, UMD, and CommonJS loaders and runs in Deno, Node.js, and modern browsers",
@@ -12,24 +13,27 @@
   },
   "homepage": "https://github.com/truestamp/truestamp-js",
   "source": "src/index.ts",
-  "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "unpkg": "dist/index.umd.js",
-  "jsdelivr": "dist/index.umd.js",
-  "module": "dist/index.m.js",
+  "main": "dist/truestamp.js",
+  "module": "dist/truestamp.module.js",
+  "umd:main": "dist/truestamp.umd.js",
+  "unpkg": "dist/truestamp.umd.js",
+  "jsdelivr": "dist/truestamp.umd.js",
+  "types": "dist/truestamp.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.m.js",
-      "node": "./dist/index.js",
-      "default": "./dist/index.m.js"
+      "require": "./dist/truestamp.umd.js",
+      "import": "./dist/truestamp.module.js",
+      "node": "./dist/truestamp.umd.js",
+      "default": "./dist/truestamp.module.js"
     }
   },
-  "types": "dist/index.d.ts",
+  "mangle": {
+    "regex": "^_"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "package-check": "npx package-check",
-    "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd --name Truestamp",
+    "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd",
     "build-node": "microbundle --target=node --tsconfig tsconfig.json --format cjs",
     "build": "npm run package-check && npm run clean && npm run build-web && npm run build-node && npm run test",
     "dev": "microbundle watch --tsconfig tsconfig.json",

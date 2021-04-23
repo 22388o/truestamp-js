@@ -1,6 +1,6 @@
 // using 'var' here to avoid 'cannot re-declare block-scoped variable' err
 var nock = require("nock")
-var Truestamp = require("../../dist/index.js")
+var Truestamp = require("../../dist/truestamp.js")
 
 describe("Heartbeat resource", () => {
   test("getHeartbeat returns a heartbeat status", async () => {

@@ -11,7 +11,7 @@ const Hashes = require("jshashes")
 // const Truestamp = require("@truestamp/truestamp-js")
 
 // Local lib
-const Truestamp = require("../../dist/index.js")
+const Truestamp = require("../../dist/truestamp.js")
 
 // Create the 'examples/config.json' file, with this structure, to get started.
 //
