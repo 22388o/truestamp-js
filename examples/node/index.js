@@ -1,12 +1,20 @@
-// Truestamp library usage demo : Node.js async/await
-// Usage: `node ./index.js`
+// Truestamp library Node.js usage demo with async/await
 
+// Usage:
+//   npm install
+//   node ./index.js
+
+// Utility lib for generating hashes
 const Hashes = require("jshashes")
 
-// const Truestamp = require("../../dist/index.js")
-const Truestamp = require("@truestamp/truestamp-js")
+// Remote lib via npm
+// const Truestamp = require("@truestamp/truestamp-js")
 
-// Create the 'config.json' file, with the structure shown below to get started.
+// Local lib
+const Truestamp = require("../../dist/index.js")
+
+// Create the 'examples/config.json' file, with this structure, to get started.
+//
 // {
 //   "apiKey": "...",
 //   "apiBaseUrl": "https://api.truestamp.com/v1/"
@@ -76,6 +84,14 @@ async function asyncCall() {
     )
     const dr = await t.getDocument(updatedDoc.id, updatedDoc.revision)
     console.log(dr)
+  } catch (error) {
+    console.error(error)
+  }
+
+  try {
+    console.log(`DELETE /v1/documents/${updatedDoc.id}`)
+    let d = await t.deleteDocument(updatedDoc.id)
+    console.log(d)
   } catch (error) {
     console.error(error)
   }

@@ -37,9 +37,11 @@ The `deno/index.ts` file demonstrates some simple usage.
 
 You'll need to first install [Deno](https://deno.land/)
 
+`--allow-read` permission is required to read the local config file, and `--allow-net` is required to communicate with the API.
+
 ```sh
 cd examples/deno
-deno run --allow-net index.ts
+deno run --allow-net --allow-read index.ts
 ```
 
 ## Node.js

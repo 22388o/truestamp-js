@@ -1,4 +1,6 @@
+// Response Types
+
 export type HeartbeatStatus = {
-    ok: boolean,
-    timestamp: string,
+  ok: boolean
+  timestamp: string
 }

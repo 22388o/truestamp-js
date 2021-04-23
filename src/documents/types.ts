@@ -1,20 +1,37 @@
-export type NewDocument = {
-    hash: string,
-    type: string
+// Request Types
+
+export type NewOrUpdatedDocumentBody = {
+  hash: string
+  type?: string
 }
 
-export type DocumentParams = {
-    id: string,
-    revision: number
+export type GetAllDocumentsQueryParams {
+  start?: string
+  end?: string
+  page?: number
+  per_page?: number
 }
+
+export type GetDocumentQueryParams {
+  revision?: number
+}
+
+export type GetDocumentRevisionsQueryParams {
+  start?: string
+  end?: string
+  page?: number
+  per_page?: number
+}
+
+// Response Types
 
 export type Document = {
-    id: string,
-    revision: number,
-    hash: string,
-    hash_length: number,
-    hash_type: string,
-    hash_hex: string,
-    hash_base64: string,
-    timestamp: string,
+  readonly id: string
+  readonly revision: number
+  readonly hash: string
+  readonly hash_length: number
+  readonly hash_type: string
+  readonly hash_hex: string
+  readonly hash_base64: string
+  readonly timestamp: string
 }
