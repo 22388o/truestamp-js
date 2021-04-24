@@ -15,6 +15,7 @@
   "source": "src/index.ts",
   "main": "dist/truestamp.js",
   "module": "dist/truestamp.module.js",
+  "esmodule": "dist/truestamp.modern.js",
   "umd:main": "dist/truestamp.umd.js",
   "unpkg": "dist/truestamp.umd.js",
   "jsdelivr": "dist/truestamp.umd.js",
@@ -33,7 +34,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "package-check": "npx package-check",
-    "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd",
+    "build-web": "microbundle --target=web --tsconfig tsconfig.json --format es,umd,modern",
     "build-node": "microbundle --target=node --tsconfig tsconfig.json --format cjs",
     "build": "npm run package-check && npm run clean && npm run build-web && npm run build-node && npm run test",
     "dev": "microbundle watch --tsconfig tsconfig.json",
