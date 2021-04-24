@@ -3,6 +3,7 @@
 [![@truestamp/truestamp-js](https://snyk.io/advisor/npm-package/@truestamp/truestamp-js/badge.svg)](https://snyk.io/advisor/npm-package/@truestamp/truestamp-js)
 [![actions](https://github.com/truestamp/truestamp-js/workflows/main/badge.svg?branch=main)](https://github.com/truestamp/truestamp-js/actions)
 [![@truestamp/truestamp-js](https://img.shields.io/npm/v/@truestamp/truestamp-js)](https://www.npmjs.com/package/@truestamp/truestamp-js)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/@truestamp/truestamp-js/badge)](https://www.jsdelivr.com/package/npm/@truestamp/truestamp-js)
 
 ## Description
 
