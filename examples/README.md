@@ -2,7 +2,7 @@
 
 ## Examples Setup
 
-For all of the demo's you'll currently need an API key. Create the file `examples/config.json` to match the following JSON structure.
+To run any of the demos you'll need an API key. Create the file `examples/config.json` to match the following JSON structure.
 
 ```json
 {
@@ -12,41 +12,26 @@ For all of the demo's you'll currently need an API key. Create the file `example
 
 ## Browser
 
-To test out the browser example locally you'll need a simple local HTTP server that supports CORS. An easy local server to try without any installation is '[serve](https://github.com/vercel/serve)'.
+To test out the browser examples locally you'll need a simple HTTP server that supports CORS. An easy local server to try without any installation is '[serve](https://github.com/vercel/serve)'. You can try it out by running `npm run serve` from the root directory of this repository (not the examples/ directory).
 
-```sh
-❯ npx serve --cors
-
-   ┌──────────────────────────────────────────────────┐
-   │                                                  │
-   │   Serving!                                       │
-   │                                                  │
-   │   - Local:            http://localhost:5000      │
-   │   - On Your Network:  http://192.168.7.55:5000   │
-   │                                                  │
-   │   Copied local address to clipboard!             │
-   │                                                  │
-   └──────────────────────────────────────────────────┘
-```
-
-Once the server is running open [http://127.0.0.1:5000/examples/web](http://127.0.0.1:5000/examples/web). This example code implements a pared down app the utilizes [alpine.js](https://github.com/alpinejs/alpine/) to provide some interactivity.
+Once the server is running open [http://127.0.0.1:5000/examples/web](http://127.0.0.1:5000/examples/web) in your browser. This example code implements a demo app the utilizes [alpine.js](https://github.com/alpinejs/alpine/) and the UMD build to provide some interactivity, and a simpler example using ES Modules.
 
 ## Deno
 
-The `deno/index.ts` file demonstrates some simple usage.
+The `deno/index.ts` file demonstrates simple usage. The source code can be modified to `import` the library from a local build or from a CDN.
 
 You'll need to first install [Deno](https://deno.land/)
 
-`--allow-read` permission is required to read the local config file, and `--allow-net` is required to communicate with the API.
+`--allow-read` permission is required to read the local config file, and `--allow-net` is required to communicate with the API. The use of `--reload` is optional.
 
 ```sh
 cd examples/deno
-deno run --reload --allow-net --allow-read index.ts
+deno run [--reload] --allow-net --allow-read index.ts
 ```
 
 ## Node.js
 
-The `node/index.js` file demonstrates some simple usage.
+The `node/index.js` file demonstrates some simple usage. The source code can be modified to `require` the library from a local build or from a CDN.
 
 ```sh
 cd examples/node

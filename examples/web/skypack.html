@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Truestamp Example Client (SkyPack)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Truestamp Example (SkyPack)</h1>
+
+    <p>See console for output</p>
+
+    <p>
+      An example app using the SkyPack ES Module build. Return to the Alpine.js
+      and Truestamp JS UMD build
+      <a href="/examples/web/index.html">here</a>.
+    </p>
+
+    <!-- Helper lib for generating hashes -->
+    <script src="https://cdn.jsdelivr.net/npm/jshashes@1.0.8/hashes.min.js"></script>
+
+    <script type="module">
+      // ES Module import
+      import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js"
+
+      async function main() {
+        let configResp = await fetch("/examples/config.json")
+        let config = await configResp.json()
+
+        let t = new Truestamp({
+          apiKey: config.apiKey,
+          apiBaseUrl: config.apiBaseUrl,
+        })
+
+        console.log(await t.getHeartbeat())
+
+        let hashHex = new Hashes.SHA256().hex("Truestamp rocks!")
+        console.log(hashHex)
+
+        let newDoc = await t.createDocument({ hash: hashHex, type: "sha2-256" })
+        console.log(newDoc)
+      }
+
+      main()
+    </script>
+  </body>
+</html>

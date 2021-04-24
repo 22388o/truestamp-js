@@ -37,7 +37,8 @@
     "build-node": "microbundle --target=node --tsconfig tsconfig.json --format cjs",
     "build": "npm run package-check && npm run clean && npm run build-web && npm run build-node && npm run test",
     "dev": "microbundle watch --tsconfig tsconfig.json",
-    "test": "jest --config jest.config.ts --detectOpenHandles"
+    "test": "jest --config jest.config.ts --detectOpenHandles",
+    "serve": "npx serve --cors"
   },
   "keywords": [
     "Truestamp",

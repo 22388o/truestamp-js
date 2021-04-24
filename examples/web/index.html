@@ -8,6 +8,13 @@
   <body>
     <h1>Truestamp Example Client</h1>
 
+    <p>
+      An example app using Alpine.js and the Truestamp JS UMD build. You can see
+      a simpler alternative example that utilizes the SkyPack ES Module build in
+      the
+      <a href="/examples/web/skypack.html">skypack.html</a> file.
+    </p>
+
     <!-- AlpineJS gives us some easy interactivity -->
     <!-- See : https://github.com/alpinejs/alpine/ -->
     <script
@@ -73,23 +80,20 @@
       <h2>POST /documents</h2>
 
       <h3>Text</h3>
-      <p>Enter some text to hash, which will be auto-submitted.</p>
+      <p>Enter some text to hash and submit it.</p>
 
-      <textarea
-        rows="4"
-        cols="50"
-        x-model="createDocumentText"
-        x-on:input.debounce.25ms="createDocumentUpdateHash()"
-      ></textarea>
+      <!-- modify this textarea to add `x-on:input.debounce.25ms="createDocumentUpdateHash()"` to allow autosubmit on every change -->
+      <textarea rows="4" cols="50" x-model="createDocumentText"></textarea>
+      <br />
+
+      <button type="submit" @click="createDocumentUpdateHash()">
+        Create and Submit Document Hash
+      </button>
 
       <div x-show="createDocumentHash !== null">
         <h3>SHA-256(Text)</h3>
         <pre><code x-text="createDocumentHash"></code></pre>
       </div>
-
-      <!--
-      <button type="submit" @click="createDocument()">Make request</button>
-      -->
 
       <div x-show="createDocumentResp !== null">
         <h3>POST /documents API Response</h3>
@@ -109,7 +113,7 @@
             createDocumentHash: null,
             createDocumentResp: null,
             fetchConfig() {
-              fetch("../config.json")
+              fetch("/examples/config.json")
                 .then((res) => {
                   return res.json()
                 })
