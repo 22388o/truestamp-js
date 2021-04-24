@@ -41,7 +41,7 @@ You'll need to first install [Deno](https://deno.land/)
 
 ```sh
 cd examples/deno
-deno run --allow-net --allow-read index.ts
+deno run --reload --allow-net --allow-read index.ts
 ```
 
 ## Node.js
