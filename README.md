@@ -95,13 +95,13 @@ You can use a `<script>` tag in the browser to load a specific version of the li
 <script src="https://cdn.jsdelivr.net/npm/@truestamp/truestamp-js@latest/dist/truestamp.umd.min.js"></script>
 ```
 
+The JS files available for each version can be browsed at [JSDELIVR](https://www.jsdelivr.com/package/npm/@truestamp/truestamp-js)
+
 ```html
 <!-- load from UNPKG CDN latest (using latest not recommended for production use, pin a version) -->
 <!-- See : https://unpkg.com/browse/@truestamp/truestamp-js/ -->
 <script src="https://unpkg.com/@truestamp/truestamp-js"></script>
 ```
-
-The list of files available for each version can be browsed at [UNPKG](https://unpkg.com/@truestamp/truestamp-js/)
 
 ### Example Code
 
