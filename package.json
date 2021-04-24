@@ -23,7 +23,7 @@
     ".": {
       "require": "./dist/truestamp.umd.js",
       "import": "./dist/truestamp.module.js",
-      "node": "./dist/truestamp.umd.js",
+      "node": "./dist/truestamp.js",
       "default": "./dist/truestamp.module.js"
     }
   },
