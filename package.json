@@ -21,7 +21,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/truestamp.umd.js",
+      "require": "./dist/truestamp.js",
       "import": "./dist/truestamp.module.js",
       "node": "./dist/truestamp.js",
       "default": "./dist/truestamp.module.js"
