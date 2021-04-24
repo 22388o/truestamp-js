@@ -92,13 +92,15 @@ Warning: Do not expose your Truestamp private API key in code shipped to browser
 You can use a `<script>` tag in the browser to load a specific version of the library from several supported CDN's. Replace the pinned version in the link with the version you use in your app. You can use the UMD build for browser support.
 
 ```html
-<!-- JSDELIVR UMD -->
-<script src="https://cdn.jsdelivr.net/npm/@truestamp/truestamp-js@0.0.12/dist/index.umd.min.js"></script>
+<!-- load from JSDELIVR CDN latest (using latest not recommended for production use, pin a version) -->
+<!-- See : https://www.jsdelivr.com/package/npm/@truestamp/truestamp-js -->
+<script src="https://cdn.jsdelivr.net/npm/@truestamp/truestamp-js@latest/dist/truestamp.umd.min.js"></script>
 ```
 
 ```html
-<!-- UNPKG UMD -->
-<script src="https://unpkg.com/browse/@truestamp/truestamp-js@0.0.12"></script>
+<!-- load from UNPKG CDN latest (using latest not recommended for production use, pin a version) -->
+<!-- See : https://unpkg.com/browse/@truestamp/truestamp-js/ -->
+<script src="https://unpkg.com/@truestamp/truestamp-js"></script>
 ```
 
 The list of files available for each version can be browsed at [UNPKG](https://unpkg.com/@truestamp/truestamp-js/)
