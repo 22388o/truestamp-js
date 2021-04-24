@@ -55,9 +55,7 @@
   ],
   "license": "MIT",
   "files": [
-    "src",
-    "dist",
-    "examples"
+    "dist"
   ],
   "devDependencies": {
     "@skypack/package-check": "^0.2.2",
