@@ -6,6 +6,7 @@ export function getApiBaseUriForEnv(env: string): string {
     case "staging":
       return "https://staging-api.truestamp.com/v1/"
 
+    case "":
     case "production":
       return "https://api.truestamp.com/v1/"
 
