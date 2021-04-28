@@ -1,6 +1,6 @@
 import { Heartbeat } from "./heartbeat"
 import { Documents } from "./documents"
-import { applyMixins } from "./utils"
+import { applyMixins } from "./baseUtils"
 import { Base } from "./base"
 
 class Truestamp extends Base {}
