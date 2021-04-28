@@ -1,24 +1,26 @@
 import fetch from "isomorphic-unfetch"
 
+import { getApiBaseUriForEnv } from "./baseUtils"
+
 type Config = {
   accessToken: string
-  apiBaseUrl?: string
+  apiEnv?: string
 }
 
 export abstract class Base {
   private accessToken: string
-  private apiBaseUrl: string
+  private apiEnv: string
 
   constructor(config: Config) {
     this.accessToken = config.accessToken
-    this.apiBaseUrl = config.apiBaseUrl || "https://api.truestamp.com/v1/"
+    this.apiEnv = config.apiEnv || "production"
   }
 
   protected async request<T>(
     resource: string,
     reqOptions?: RequestInit
   ): Promise<T> {
-    const url = this.apiBaseUrl + resource
+    const url = getApiBaseUriForEnv(this.apiEnv) + resource
     const headers = {
       Authorization: "Bearer " + this.accessToken,
       "Content-type": "application/json",

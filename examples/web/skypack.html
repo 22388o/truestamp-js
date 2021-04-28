@@ -29,7 +29,7 @@
 
         let t = new Truestamp({
           accessToken: config.accessToken,
-          apiBaseUrl: config.apiBaseUrl,
+          apiEnv: config.apiEnv,
         })
 
         console.log(await t.getHeartbeat())

@@ -51,19 +51,13 @@
         x-on:input.debounce.750ms="clientFactory()"
       />
 
-      <!-- Generate a new client with any updates to the apiBaseUrl -->
-      <p>Client : apiBaseUrl</p>
+      <!-- Generate a new client with any updates to the apiEnv -->
+      <p>Client : apiEnv</p>
 
-      <select x-model="apiBaseUrl" x-on:input.debounce.750ms="clientFactory()">
-        <option value="https://dev-api.truestamp.com/v1/">
-          https://dev-api.truestamp.com/v1/
-        </option>
-        <option value="https://staging-api.truestamp.com/v1/">
-          https://staging-api.truestamp.com/v1/
-        </option>
-        <option value="https://api.truestamp.com/v1/">
-          https://api.truestamp.com/v1/
-        </option>
+      <select x-model="apiEnv" x-on:input.debounce.750ms="clientFactory()">
+        <option value="production">production</option>
+        <option value="staging">staging</option>
+        <option value="development">development</option>
       </select>
 
       <!-- heartbeat -->
@@ -106,7 +100,7 @@
         function loadLocalData() {
           return {
             accessToken: "",
-            apiBaseUrl: "",
+            apiEnv: "",
             client: new Truestamp({ accessToken: this.accessToken }),
             getHeartbeatResp: null,
             createDocumentText: null,
@@ -119,14 +113,16 @@
                 })
                 .then((data) => {
                   this.accessToken = data.accessToken
-                  this.apiBaseUrl = data.apiBaseUrl
+                  if (this.apiEnv === "") {
+                    this.apiEnv = data.apiEnv || "production"
+                  }
                 })
             },
             clientFactory() {
               this.fetchConfig()
               let c = new Truestamp({
                 accessToken: this.accessToken,
-                apiBaseUrl: this.apiBaseUrl,
+                apiEnv: this.apiEnv,
               })
               console.log("client", c)
               this.client = c
