@@ -28,11 +28,11 @@
     <!-- TRUESTAMP : Choose One of these loading methods and comment out the others -->
 
     <!-- load locally for dev -->
-    <!-- <script src="../../dist/truestamp.umd.js"></script> -->
+    <script src="../../dist/truestamp.umd.js"></script>
 
     <!-- load from JSDELIVR CDN latest (using latest not recommended for production use, pin a version) -->
     <!-- See : https://www.jsdelivr.com/package/npm/@truestamp/truestamp-js -->
-    <script src="https://cdn.jsdelivr.net/npm/@truestamp/truestamp-js@latest/dist/truestamp.umd.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@truestamp/truestamp-js@latest/dist/truestamp.umd.min.js"></script> -->
 
     <!-- load from UNPKG CDN latest (using latest not recommended for production use, pin a version) -->
     <!-- See : https://unpkg.com/browse/@truestamp/truestamp-js/ -->
@@ -43,11 +43,11 @@
     <div x-data="loadLocalData()" x-init="clientFactory()">
       <h2>Config</h2>
 
-      <!-- Generate a new client with any updates to the apiKey -->
-      <p>Client : apiKey</p>
+      <!-- Generate a new client with any updates to the accessToken -->
+      <p>Client : accessToken</p>
       <input
         type="text"
-        x-model="apiKey"
+        x-model="accessToken"
         x-on:input.debounce.750ms="clientFactory()"
       />
 
@@ -105,9 +105,9 @@
       <script>
         function loadLocalData() {
           return {
-            apiKey: "",
+            accessToken: "",
             apiBaseUrl: "",
-            client: new Truestamp({ apiKey: this.apiKey }),
+            client: new Truestamp({ accessToken: this.accessToken }),
             getHeartbeatResp: null,
             createDocumentText: null,
             createDocumentHash: null,
@@ -118,14 +118,14 @@
                   return res.json()
                 })
                 .then((data) => {
-                  this.apiKey = data.apiKey
+                  this.accessToken = data.accessToken
                   this.apiBaseUrl = data.apiBaseUrl
                 })
             },
             clientFactory() {
               this.fetchConfig()
               let c = new Truestamp({
-                apiKey: this.apiKey,
+                accessToken: this.accessToken,
                 apiBaseUrl: this.apiBaseUrl,
               })
               console.log("client", c)

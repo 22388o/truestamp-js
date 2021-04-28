@@ -1,16 +1,16 @@
 import fetch from "isomorphic-unfetch"
 
 type Config = {
-  apiKey: string
+  accessToken: string
   apiBaseUrl?: string
 }
 
 export abstract class Base {
-  private apiKey: string
+  private accessToken: string
   private apiBaseUrl: string
 
   constructor(config: Config) {
-    this.apiKey = config.apiKey
+    this.accessToken = config.accessToken
     this.apiBaseUrl = config.apiBaseUrl || "https://api.truestamp.com/v1/"
   }
 
@@ -20,7 +20,7 @@ export abstract class Base {
   ): Promise<T> {
     const url = this.apiBaseUrl + resource
     const headers = {
-      Authorization: "Bearer " + this.apiKey,
+      Authorization: "Bearer " + this.accessToken,
       "Content-type": "application/json",
       Accept: "application/json",
     }

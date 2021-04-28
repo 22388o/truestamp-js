@@ -42,14 +42,14 @@ In your NPM project directory.
 npm install @truestamp/truestamp-js --save
 ```
 
-Require the `@truestamp/truestamp-js` CommonJS module in your project and initialize it with your [apiKey](https://app.truestamp.com).
+Require the `@truestamp/truestamp-js` CommonJS module in your project and initialize it with your [accessToken](https://app.truestamp.com).
 
 #### Node.js Example
 
 ```js
 const Truestamp = require("@truestamp/truestamp-js")
 
-const TruestampClient = new Truestamp({ apiKey: "%yourApiKey%" })
+const TruestampClient = new Truestamp({ accessToken: "%yourAccessToken%" })
 
 TruestampClient.getHeartbeat()
   .then((data) => console.log(data))
@@ -62,7 +62,7 @@ TruestampClient.getHeartbeat()
 
 #### Setup Deno
 
-Import the `@truestamp/truestamp-js` ESM module in your project via [SkyPack](https://www.skypack.dev) and initialize it with your [apiKey](https://app.truestamp.com).
+Import the `@truestamp/truestamp-js` ESM module in your project via [SkyPack](https://www.skypack.dev) and initialize it with your [accessToken](https://app.truestamp.com).
 
 SkyPack Package Info
 
@@ -77,7 +77,7 @@ It is recommended to used a [pinned version](https://docs.skypack.dev/skypack-cd
 import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js?dts"
 
 const TruestampClient = new Truestamp({
-  apiKey: "%yourApiKey%",
+  accessToken: "%yourAccessToken%",
 })
 
 const hb = await TruestampClient.getHeartbeat()
@@ -86,7 +86,7 @@ console.log(hb)
 
 ### Browser (UMD)
 
-Warning: Do not expose your Truestamp private API key in code shipped to browser clients over the web!
+Warning: Do not expose your Truestamp access token in code shipped to browser clients over the web!
 
 You can use a `<script>` tag in the browser to load a specific version of the library from several supported CDN's. Replace the pinned version in the link with the version you use in your app. You can use the ES Modules or UMD builds for browser support.
 

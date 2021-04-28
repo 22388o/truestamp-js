@@ -20,7 +20,7 @@ describe("Documents resource", () => {
       .post("/v1/documents")
       .reply(201, mockResp)
 
-    const c = new Truestamp({ apiKey: "XYZ" })
+    const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.createDocument({
       hash: mockResp.hash,
       type: mockResp.hash_type,
@@ -48,7 +48,7 @@ describe("Documents resource", () => {
       .put(`/v1/documents/${mockResp.id}`)
       .reply(201, mockResp)
 
-    const c = new Truestamp({ apiKey: "XYZ" })
+    const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.updateDocument(mockResp.id, {
       hash: mockResp.hash,
       type: mockResp.hash_type,
@@ -66,7 +66,7 @@ describe("Documents resource", () => {
       .delete(`/v1/documents/${id}`)
       .reply(204, null)
 
-    const c = new Truestamp({ apiKey: "XYZ" })
+    const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.deleteDocument(id)
 
     expect(r).toEqual({})

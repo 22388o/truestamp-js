@@ -2,11 +2,11 @@
 
 ## Examples Setup
 
-To run any of the demos you'll need an API key. Create the file `examples/config.json` to match the following JSON structure.
+To run any of the demos you'll need an access token. Create the file `examples/config.json` to match the following JSON structure.
 
 ```json
 {
-  "apiKey": "..."
+  "accessToken": "..."
 }
 ```
 

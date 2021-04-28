@@ -16,14 +16,14 @@ const Truestamp = require("@truestamp/truestamp-js")
 // Create the 'examples/config.json' file, with this structure, to get started.
 //
 // {
-//   "apiKey": "...",
+//   "accessToken": "...",
 //   "apiBaseUrl": "https://api.truestamp.com/v1/"
 // }
 const config = require("../config.json")
 
 // Instantiate and configure a client object 't'
 const t = new Truestamp({
-  apiKey: config.apiKey,
+  accessToken: config.accessToken,
   apiBaseUrl: config.apiBaseUrl,
 })
 

@@ -10,7 +10,7 @@ describe("Heartbeat resource", () => {
       .get("/v1/heartbeat")
       .reply(200, mockResp)
 
-    const TruestampClient = new Truestamp({ apiKey: "XYZ" })
+    const TruestampClient = new Truestamp({ accessToken: "XYZ" })
     let r = await TruestampClient.getHeartbeat()
 
     expect(r).toEqual(mockResp)

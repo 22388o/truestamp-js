@@ -28,7 +28,7 @@
         let config = await configResp.json()
 
         let t = new Truestamp({
-          apiKey: config.apiKey,
+          accessToken: config.accessToken,
           apiBaseUrl: config.apiBaseUrl,
         })
 
