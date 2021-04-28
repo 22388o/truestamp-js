@@ -1,14 +1,18 @@
+export const BASE_URI_DEVELOPMENT = "https://dev-api.truestamp.com/v1/"
+export const BASE_URI_STAGING = "https://staging-api.truestamp.com/v1/"
+export const BASE_URI_PRODUCTION = "https://api.truestamp.com/v1/"
+
 export function getApiBaseUriForEnv(env: string): string {
   switch (env) {
     case "development":
-      return "https://dev-api.truestamp.com/v1/"
+      return BASE_URI_DEVELOPMENT
 
     case "staging":
-      return "https://staging-api.truestamp.com/v1/"
+      return BASE_URI_STAGING
 
     case "":
     case "production":
-      return "https://api.truestamp.com/v1/"
+      return BASE_URI_PRODUCTION
 
     default:
       throw new Error(`invalid environment : '${env}'`)
