@@ -9,8 +9,7 @@ import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js?dts"
 // Or, load from local lib in development
 // import Truestamp from "../../dist/truestamp.module.js"
 
-// See : https://deno.land/std@0.94.0/hash
-import { createHash } from "https://deno.land/std@0.94.0/hash/mod.ts"
+import { createHash } from "https://deno.land/std@0.95.0/hash/mod.ts"
 
 // setup Truestamp client using local config file
 const configTxt = await Deno.readTextFile("../config.json")
