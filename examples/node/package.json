@@ -9,7 +9,7 @@
   "author": "Truestamp <support@truestamp.com>",
   "license": "MIT",
   "dependencies": {
-    "@truestamp/truestamp-js": "^0.0.47",
+    "@truestamp/truestamp-js": "^0.0.51",
     "jshashes": "^1.0.8"
   }
 }
