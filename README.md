@@ -112,12 +112,17 @@ There are working code examples for Deno, Node.js, and the Web in the [/examples
 
 We'd love you to join our network of contributors. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for help getting started.
 
+### Releasing
+
+- Commit changes, merge PR's to `main` branch
+- Bump `version` field in `package.json`
+- Cut a new [release](https://github.com/truestamp/truestamp-js/releases)
+- New release will trigger workflow to build, test, and publish private package to [Github Package Registry](https://github.com/truestamp/truestamp-js/packages).
+
 ## Code of Conduct
 
 We expect all members of the community to respect our [Code of Conduct](CODE_OF_CONDUCT.md) at all times.
 
-## Thanks
+## Legal
 
-[https://github.com/ilyamkin/dev-to-js](https://github.com/ilyamkin/dev-to-js)
-
-[https://medium.com/better-programming/how-to-build-an-api-client-library-in-javascript-665df869bdd5](https://medium.com/better-programming/how-to-build-an-api-client-library-in-javascript-665df869bdd5)
+Copyright © 2021 Truestamp Inc. All Rights Reserved.
