@@ -117,7 +117,7 @@ We'd love you to join our network of contributors. Please read [CONTRIBUTING.md]
 - Commit changes, merge PR's to `main` branch
 - Bump `version` field in `package.json`
 - Cut a new [release](https://github.com/truestamp/truestamp-js/releases)
-- New release will trigger workflow to build, test, and publish package to [Github Package Registry](https://github.com/truestamp/truestamp-js/packages).
+- New release will trigger workflow to build, test, and publish package to [Github Package Registry](https://github.com/truestamp/truestamp-js/packages) and [NPM.js](https://www.npmjs.com/package/@truestamp/truestamp-js).
 
 ## Code of Conduct
 

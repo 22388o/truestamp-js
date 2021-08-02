@@ -4,12 +4,12 @@
 
 // Load latest ES Module from SkyPack. You should really use a pinned URL!
 // See : https://docs.skypack.dev/skypack-cdn/code/optimize-for-production
-import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js?dts"
+// import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js?dts"
 
 // Or, load from local lib in development
-// import Truestamp from "../../dist/truestamp.module.js"
+import Truestamp from "../../dist/truestamp.module.js"
 
-import { createHash } from "https://deno.land/std@0.95.0/hash/mod.ts"
+import { createHash } from "https://deno.land/std@0.103.0/hash/mod.ts"
 
 // setup Truestamp client using local config file
 const configTxt = await Deno.readTextFile("../config.json")
@@ -28,7 +28,7 @@ const nowHashBase64 = nowHasher.toString("base64")
 
 const newDoc = await t.createDocument({
   hash: nowHashBase64,
-  type: "sha2-256",
+  name: "sha2-256",
 })
 console.log(newDoc)
 
@@ -48,13 +48,13 @@ const laterHashBase64 = laterHasher.toString("base64")
 
 const updatedDoc = await t.updateDocument(newDoc.id, {
   hash: laterHashBase64,
-  type: "sha2-256",
+  name: "sha2-256",
 })
 console.log(updatedDoc)
 
-// get all revisions for doc
-const docRevisions = await t.getDocumentRevisions(newDoc.id)
-console.log(docRevisions)
+// get all versions for doc
+const docVersions = await t.getDocumentVersions(newDoc.id)
+console.log(docVersions)
 
 // delete document
 const deletedDoc = await t.deleteDocument(newDoc.id)

@@ -2,21 +2,17 @@
 
 export type NewOrUpdatedDocumentBody = {
   hash: string
-  type?: string
+  name?: string
 }
 
-export type GetAllDocumentsQueryParams {
+export type GetAllDocumentsQueryParams = {
   start?: string
   end?: string
   page?: number
   per_page?: number
 }
 
-export type GetDocumentQueryParams {
-  revision?: number
-}
-
-export type GetDocumentRevisionsQueryParams {
+export type GetDocumentVersionsQueryParams = {
   start?: string
   end?: string
   page?: number
@@ -27,11 +23,9 @@ export type GetDocumentRevisionsQueryParams {
 
 export type Document = {
   readonly id: string
-  readonly revision: number
-  readonly hash: string
-  readonly hash_length: number
-  readonly hash_type: string
-  readonly hash_hex: string
-  readonly hash_base64: string
+  readonly hashMultihash: string
+  readonly hashHex: string
+  readonly hashBase64: string
+  readonly hashName: string
   readonly timestamp: string
 }

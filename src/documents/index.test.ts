@@ -5,15 +5,12 @@ var Truestamp = require("../../dist/truestamp.js")
 describe("Documents resource", () => {
   test("createDocument returns a Document", async () => {
     let mockResp = {
-      id: "7NmEPIZsw2Z0CIbtUvlG7p",
-      revision: 0,
-      hash: "mEiA0gB9jk4/3vLjRcgt9j0GCbgw3SVlZEb19hpubKa3V9g",
-      hash_length: 32,
-      hash_type: "sha2-256",
-      hash_hex:
-        "34801f63938ff7bcb8d1720b7d8f41826e0c3749595911bd7d869b9b29add5f6",
-      hash_base64: "NIAfY5OP97y40XILfY9Bgm4MN0lZWRG9fYabmymt1fY=",
-      timestamp: "2021-04-23T19:35:27.163Z",
+      id: "truestamp6DDBGMN950YVS14M91K54YWW6HWDNRSRQSX621WV02HG9CWJK2GSYRTRK5SV4YTAA6V7EYCT9YS66ZJ68PD8P1G3034XP2R1",
+      hashMultihash: "mEiBiJeTCiLq/vWB2pvvYKk7Ovw+lIFhHGYNDlOWfer988g",
+      hashHex: "6225e4c288babfbd6076a6fbd82a4ecebf0fa520584719834394e59f7abf7cf2",
+      hashBase64: "YiXkwoi6v71gdqb72CpOzr8PpSBYRxmDQ5Tln3q/fPI=",
+      hashName: "sha2-256",
+      timestamp: "2021-08-02T20:29:59.604+00:00",
     }
 
     const scope = nock("https://api.truestamp.com")
@@ -22,8 +19,8 @@ describe("Documents resource", () => {
 
     const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.createDocument({
-      hash: mockResp.hash,
-      type: mockResp.hash_type,
+      hash: mockResp.hashMultihash,
+      name: mockResp.hashName,
     })
 
     expect(r).toEqual(mockResp)
@@ -33,15 +30,12 @@ describe("Documents resource", () => {
 
   test("updateDocument returns an updated Document", async () => {
     let mockResp = {
-      id: "7NmEPIZsw2Z0CIbtUvlG7p",
-      revision: 0,
-      hash: "mEiA0gB9jk4/3vLjRcgt9j0GCbgw3SVlZEb19hpubKa3V9g",
-      hash_length: 32,
-      hash_type: "sha2-256",
-      hash_hex:
-        "34801f63938ff7bcb8d1720b7d8f41826e0c3749595911bd7d869b9b29add5f6",
-      hash_base64: "NIAfY5OP97y40XILfY9Bgm4MN0lZWRG9fYabmymt1fY=",
-      timestamp: "2021-04-23T19:35:27.163Z",
+      id: "truestamp6DDBGMN950YVS14M91K54YWW6HWDNRSRQSX621WV02HG9CWJK2GSYRTRK5SV4YTAA6V7EYCT9YS66ZJ68PD8P1G3034XP2R1",
+      hashMultihash: "mEiBiJeTCiLq/vWB2pvvYKk7Ovw+lIFhHGYNDlOWfer988g",
+      hashHex: "6225e4c288babfbd6076a6fbd82a4ecebf0fa520584719834394e59f7abf7cf2",
+      hashBase64: "YiXkwoi6v71gdqb72CpOzr8PpSBYRxmDQ5Tln3q/fPI=",
+      hashName: "sha2-256",
+      timestamp: "2021-08-02T20:29:59.604+00:00",
     }
 
     const scope = nock("https://api.truestamp.com")
@@ -50,8 +44,8 @@ describe("Documents resource", () => {
 
     const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.updateDocument(mockResp.id, {
-      hash: mockResp.hash,
-      type: mockResp.hash_type,
+      hash: mockResp.hashMultihash,
+      name: mockResp.hashName,
     })
 
     expect(r).toEqual(mockResp)
@@ -60,7 +54,7 @@ describe("Documents resource", () => {
   })
 
   test("deleteDocument returns an empty object", async () => {
-    let id = "7NmEPIZsw2Z0CIbtUvlG7p"
+    let id = "truestamp6DDBGMN950YVS14M91K54YWW6HWDNRSRQSX621WV02HG9CWJK2GSYRTRK5SV4YTAA6V7EYCT9YS66ZJ68PD8P1G3034XP2R1"
 
     const scope = nock("https://api.truestamp.com")
       .delete(`/v1/documents/${id}`)

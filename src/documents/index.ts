@@ -5,8 +5,7 @@ import {
   Document,
   NewOrUpdatedDocumentBody,
   GetAllDocumentsQueryParams,
-  GetDocumentQueryParams,
-  GetDocumentRevisionsQueryParams,
+  GetDocumentVersionsQueryParams,
 } from "./types"
 
 // The base restful resource path
@@ -32,12 +31,8 @@ export class Documents extends Base {
     return this.request<Document[]>(resource)
   }
 
-  getDocument(id: string, params?: GetDocumentQueryParams) {
+  getDocument(id: string) {
     let resource = `${baseResource}/${id}`
-
-    if (params) {
-      resource += stringify(params, true) // ?revision=NUM
-    }
 
     return this.request<Document>(resource)
   }
@@ -59,8 +54,8 @@ export class Documents extends Base {
     })
   }
 
-  getDocumentRevisions(id: string, params?: GetDocumentRevisionsQueryParams) {
-    let resource = `${baseResource}/${id}/revisions`
+  getDocumentVersions(id: string, params?: GetDocumentVersionsQueryParams) {
+    let resource = `${baseResource}/${id}/versions`
 
     if (params) {
       resource += stringify(params, true) // ?start=tz&end=tz&page=1&per_page=10

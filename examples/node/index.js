@@ -8,10 +8,10 @@
 const Hashes = require("jshashes")
 
 // Remote lib via npm
-const Truestamp = require("@truestamp/truestamp-js")
+// const Truestamp = require("@truestamp/truestamp-js")
 
 // Local lib
-// const Truestamp = require("../../dist/truestamp.js")
+const Truestamp = require("../../dist/truestamp.js")
 
 // Create the 'examples/config.json' file, with this structure, to get started.
 //
@@ -44,7 +44,7 @@ async function asyncCall() {
 
     newDoc = await t.createDocument({
       hash: nowHash,
-      type: "sha2-256",
+      name: "sha2-256",
     })
     console.log(newDoc)
   } catch (error) {
@@ -69,7 +69,7 @@ async function asyncCall() {
 
     updatedDoc = await t.updateDocument(newDoc.id, {
       hash: nowHash,
-      type: "sha2-256",
+      name: "sha2-256",
     })
     console.log(updatedDoc)
   } catch (error) {
@@ -77,10 +77,8 @@ async function asyncCall() {
   }
 
   try {
-    console.log(
-      `GET /v1/documents/${updatedDoc.id}?revision=${updatedDoc.revision}`
-    )
-    const dr = await t.getDocument(updatedDoc.id, updatedDoc.revision)
+    console.log(`GET /v1/documents/${updatedDoc.id}`)
+    const dr = await t.getDocument(updatedDoc.id)
     console.log(dr)
   } catch (error) {
     console.error(error)

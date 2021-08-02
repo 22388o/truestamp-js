@@ -37,7 +37,7 @@
         let hashHex = new Hashes.SHA256().hex("Truestamp rocks!")
         console.log(hashHex)
 
-        let newDoc = await t.createDocument({ hash: hashHex, type: "sha2-256" })
+        let newDoc = await t.createDocument({ hash: hashHex, name: "sha2-256" })
         console.log(newDoc)
       }
 
