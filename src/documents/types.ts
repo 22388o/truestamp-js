@@ -9,14 +9,14 @@ export type GetAllDocumentsQueryParams = {
   start?: string
   end?: string
   page?: number
-  per_page?: number
+  perPage?: number
 }
 
 export type GetDocumentVersionsQueryParams = {
   start?: string
   end?: string
   page?: number
-  per_page?: number
+  perPage?: number
 }
 
 // Response Types

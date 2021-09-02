@@ -25,7 +25,7 @@ export class Documents extends Base {
     let resource = `${baseResource}`
 
     if (params) {
-      resource += stringify(params, true) // ?start=tz&end=tz&page=1&per_page=10
+      resource += stringify(params, true) // ?start=tz&end=tz&page=1&perPage=10
     }
 
     return this.request<Document[]>(resource)
@@ -58,7 +58,7 @@ export class Documents extends Base {
     let resource = `${baseResource}/${id}/versions`
 
     if (params) {
-      resource += stringify(params, true) // ?start=tz&end=tz&page=1&per_page=10
+      resource += stringify(params, true) // ?start=tz&end=tz&page=1&perPage=10
     }
 
     return this.request<Document[]>(resource)
