@@ -16,20 +16,23 @@ const Truestamp = require("../../dist/truestamp.js")
 // Create the 'examples/config.json' file, with this structure, to get started.
 //
 // {
-//   "accessToken": "..."
+//   "accessToken": "...",
+//   "apiEnv": "development"
 // }
 const config = require("../config.json")
+// const config = require("../config.dev.json")
 
 // Instantiate and configure a client object 't'
 const t = new Truestamp({
   accessToken: config.accessToken,
+  apiEnv: config.apiEnv
 })
 
 async function asyncCall() {
   try {
-    console.log(`GET /v1/heartbeat`)
-    const hb = await t.getHeartbeat()
-    console.log(hb)
+    console.log(`GET /v1/health`)
+    const h = await t.getHealth()
+    console.log(h)
   } catch (error) {
     console.error(error)
   }

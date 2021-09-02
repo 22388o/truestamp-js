@@ -32,7 +32,7 @@
           apiEnv: config.apiEnv,
         })
 
-        console.log(await t.getHeartbeat())
+        console.log(await t.getHealth())
 
         let hashHex = new Hashes.SHA256().hex("Truestamp rocks!")
         console.log(hashHex)

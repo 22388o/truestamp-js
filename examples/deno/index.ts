@@ -16,9 +16,9 @@ const configTxt = await Deno.readTextFile("../config.json")
 const config = JSON.parse(configTxt)
 const t = new Truestamp(config)
 
-// check for heartbeat
-const hb = await t.getHeartbeat()
-console.log(hb)
+// check for health
+const h = await t.getHealth()
+console.log(h)
 
 // submit a new document
 const now = new Date()

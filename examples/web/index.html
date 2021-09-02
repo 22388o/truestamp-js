@@ -60,14 +60,14 @@
         <option value="development">development</option>
       </select>
 
-      <!-- heartbeat -->
-      <h2>GET /heartbeat</h2>
+      <!-- health -->
+      <h2>GET /health</h2>
 
       <div>
-        <button type="submit" @click="getHeartbeat()">Get Heartbeat</button>
+        <button type="submit" @click="getHealth()">Get Health</button>
         <pre
-          x-show="getHeartbeatResp !== null"
-        ><code x-text="JSON.stringify(getHeartbeatResp, null, 4)"></code></pre>
+          x-show="getHealthResp !== null"
+        ><code x-text="JSON.stringify(getHealthResp, null, 4)"></code></pre>
       </div>
 
       <!-- documents -->
@@ -102,7 +102,7 @@
             accessToken: "",
             apiEnv: "",
             client: new Truestamp({ accessToken: this.accessToken }),
-            getHeartbeatResp: null,
+            getHealthResp: null,
             createDocumentText: null,
             createDocumentHash: null,
             createDocumentResp: null,
@@ -127,15 +127,15 @@
               console.log("client", c)
               this.client = c
             },
-            getHeartbeat() {
+            getHealth() {
               this.clientFactory()
               this.client
-                .getHeartbeat()
+                .getHealth()
                 .then(
-                  (data) => (console.log(data), (this.getHeartbeatResp = data))
+                  (data) => (console.log(data), (this.getHealthResp = data))
                 )
                 .catch((error) => {
-                  console.error(error), (this.getHeartbeatResp = error.message)
+                  console.error(error), (this.getHealthResp = error.message)
                 })
             },
             createDocumentUpdateHash() {

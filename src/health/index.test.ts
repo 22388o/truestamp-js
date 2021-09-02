@@ -2,16 +2,16 @@
 var nock = require("nock")
 var Truestamp = require("../../dist/truestamp.js")
 
-describe("Heartbeat resource", () => {
-  test("getHeartbeat returns a heartbeat status", async () => {
-    let mockResp = { ok: true, timestamp: "2021-01-16T02:48:46.548Z" }
+describe("Health resource", () => {
+  test("getHealth returns a health status", async () => {
+    let mockResp = { status: 'pass' }
 
     const scope = nock("https://api.truestamp.com")
-      .get("/v1/heartbeat")
+      .get("/v1/health")
       .reply(200, mockResp)
 
     const TruestampClient = new Truestamp({ accessToken: "XYZ" })
-    let r = await TruestampClient.getHeartbeat()
+    let r = await TruestampClient.getHealth()
 
     expect(r).toEqual(mockResp)
 
