@@ -1,15 +1,15 @@
 import { Base } from "../base"
 
-import { Token } from "./types"
+import { Token, NewOrUpdatedTokenBody } from "./types"
 const baseResource = "tokens"
 
 export class Tokens extends Base {
-    getToken() {
+  createToken(token: NewOrUpdatedTokenBody) {
     let resource = `${baseResource}`
 
     return this.request<Token>(resource, {
       method: "POST",
-      body: null,
+      body: JSON.stringify(token),
     })
   }
 
