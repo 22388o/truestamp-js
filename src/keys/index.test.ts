@@ -2,18 +2,19 @@
 var nock = require("nock")
 var Truestamp = require("../../dist/truestamp.js")
 
-describe("Tokens resource", () => {
-  test("createToken returns a token status", async () => {
-    let mockResp = { token: "abc123" }
+describe("Keys resource", () => {
+  test("createApiKey returns a key", async () => {
+    let mockResp = { key: "abc123" }
 
     const scope = nock("https://api.truestamp.com")
-      .post("/v1/tokens")
+      .post("/v1/apikeys")
       .reply(201, mockResp)
 
     const TruestampClient = new Truestamp({ accessToken: "XYZ" })
-    let r = await TruestampClient.createToken({
+    let r = await TruestampClient.createApiKey({
       refreshToken: "myrefreshtoken",
       description: "mydescription",
+      ttl: 60
     })
     expect(r).toEqual(mockResp)
 
