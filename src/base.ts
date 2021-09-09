@@ -43,7 +43,7 @@ export abstract class Base {
         })
       } else {
         try {
-          // Return a friendler value, for calls that return {data: [..., ...]},
+          // Return a friendlier value, for calls that return {data: [..., ...]},
           // by returning just the Array.
           let respJson = await response.json()
           if (respJson.data && Array.isArray(respJson.data)) {
