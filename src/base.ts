@@ -11,7 +11,7 @@ export abstract class Base {
   private accessToken: string
   private apiEnv: string
 
-  constructor(config: Config) {
+  constructor (config: Config) {
     this.accessToken = config.accessToken
     this.apiEnv = config.apiEnv || "production"
   }
@@ -56,12 +56,19 @@ export abstract class Base {
             })
           }
         } catch (error) {
-          throw new Error(error.message)
+          if (error instanceof Error) {
+            throw new Error(error.message)
+          } else {
+            throw new Error('Unknown Error')
+          }
         }
       }
     }
 
-    // Oops. Status code is not OK.
-    throw new Error(`${response.status} : ${response.statusText}`)
+    // Oops. Status code is not OK. response.json() should return an
+    // error response like : { status: '...', message: '...' }
+    const { message } = await response.json()
+
+    throw new Error(`${response.status} : ${response.statusText} : ${message}`)
   }
 }
