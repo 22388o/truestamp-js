@@ -3,7 +3,6 @@ import { Base } from "../base"
 import { HealthStatus } from "./types"
 const baseResource = "health"
 
-// GET /health
 // GET /v1/health
 export class Health extends Base {
   getHealth() {

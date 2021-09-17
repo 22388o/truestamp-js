@@ -85,7 +85,7 @@
       </button>
 
       <div x-show="createDocumentHash !== null">
-        <h3>SHA-256(Text)</h3>
+        <h3>SHA2-256(Text)</h3>
         <pre><code x-text="createDocumentHash"></code></pre>
       </div>
 
@@ -107,7 +107,7 @@
             createDocumentHash: null,
             createDocumentResp: null,
             fetchConfig() {
-              fetch("/examples/config.json")
+              fetch("/examples/config.dev.json")
                 .then((res) => {
                   return res.json()
                 })
@@ -154,7 +154,8 @@
               this.client
                 .createDocument({
                   hash: this.createDocumentHash,
-                  type: "sha2-256",
+                  hashType: "sha2-256",
+                  description: "Example Document",
                 })
                 .then(
                   (data) => (

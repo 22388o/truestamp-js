@@ -2,7 +2,8 @@
 
 export type NewOrUpdatedDocumentBody = {
   hash: string
-  name?: string
+  hashType?: string
+  description?: string
 }
 
 export type GetAllDocumentsQueryParams = {
@@ -23,9 +24,8 @@ export type GetDocumentVersionsQueryParams = {
 
 export type Document = {
   readonly id: string
-  readonly hashMultihash: string
-  readonly hashHex: string
   readonly hashBase64: string
-  readonly hashName: string
+  readonly hashHex: string
+  readonly hashType: string
   readonly timestamp: string
 }

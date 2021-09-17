@@ -5,11 +5,11 @@ var Truestamp = require("../../dist/truestamp.js")
 describe("Documents resource", () => {
   test("createDocument returns a Document", async () => {
     let mockResp = {
-      id: "truestamp6DDBGMN950YVS14M91K54YWW6HWDNRSRQSX621WV02HG9CWJK2GSYRTRK5SV4YTAA6V7EYCT9YS66ZJ68PD8P1G3034XP2R1",
-      hashMultihash: "mEiBiJeTCiLq/vWB2pvvYKk7Ovw+lIFhHGYNDlOWfer988g",
-      hashHex: "6225e4c288babfbd6076a6fbd82a4ecebf0fa520584719834394e59f7abf7cf2",
+      id: "01FFTTBFBHJRHH404AE9QHPK7E_0",
       hashBase64: "YiXkwoi6v71gdqb72CpOzr8PpSBYRxmDQ5Tln3q/fPI=",
-      hashName: "sha2-256",
+      hashHex: "6225e4c288babfbd6076a6fbd82a4ecebf0fa520584719834394e59f7abf7cf2",
+      hashType: "sha2-256",
+      description: "This is a description",
       timestamp: "2021-08-02T20:29:59.604+00:00",
     }
 
@@ -19,8 +19,9 @@ describe("Documents resource", () => {
 
     const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.createDocument({
-      hash: mockResp.hashMultihash,
-      name: mockResp.hashName,
+      hash: mockResp.hashBase64,
+      hashType: mockResp.hashType,
+      description: mockResp.description,
     })
 
     expect(r).toEqual(mockResp)
@@ -30,11 +31,11 @@ describe("Documents resource", () => {
 
   test("updateDocument returns an updated Document", async () => {
     let mockResp = {
-      id: "truestamp6DDBGMN950YVS14M91K54YWW6HWDNRSRQSX621WV02HG9CWJK2GSYRTRK5SV4YTAA6V7EYCT9YS66ZJ68PD8P1G3034XP2R1",
-      hashMultihash: "mEiBiJeTCiLq/vWB2pvvYKk7Ovw+lIFhHGYNDlOWfer988g",
-      hashHex: "6225e4c288babfbd6076a6fbd82a4ecebf0fa520584719834394e59f7abf7cf2",
+      id: "01FFTTBFBHJRHH404AE9QHPK7E_0",
       hashBase64: "YiXkwoi6v71gdqb72CpOzr8PpSBYRxmDQ5Tln3q/fPI=",
-      hashName: "sha2-256",
+      hashHex: "6225e4c288babfbd6076a6fbd82a4ecebf0fa520584719834394e59f7abf7cf2",
+      hashType: "sha2-256",
+      description: "This is a description",
       timestamp: "2021-08-02T20:29:59.604+00:00",
     }
 
@@ -44,8 +45,9 @@ describe("Documents resource", () => {
 
     const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.updateDocument(mockResp.id, {
-      hash: mockResp.hashMultihash,
-      name: mockResp.hashName,
+      hash: mockResp.hashBase64,
+      hashType: mockResp.hashType,
+      description: mockResp.description,
     })
 
     expect(r).toEqual(mockResp)
@@ -54,7 +56,7 @@ describe("Documents resource", () => {
   })
 
   test("deleteDocument returns an empty object", async () => {
-    let id = "truestamp6DDBGMN950YVS14M91K54YWW6HWDNRSRQSX621WV02HG9CWJK2GSYRTRK5SV4YTAA6V7EYCT9YS66ZJ68PD8P1G3034XP2R1"
+    let id = "01FFTTBFBHJRHH404AE9QHPK7E_0"
 
     const scope = nock("https://api.truestamp.com")
       .delete(`/v1/documents/${id}`)

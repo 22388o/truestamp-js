@@ -12,7 +12,7 @@ import Truestamp from "../../dist/truestamp.module.js"
 import { createHash } from "https://deno.land/std@0.106.0/hash/mod.ts"
 
 // setup Truestamp client using local config file
-const configTxt = await Deno.readTextFile("../config.json")
+const configTxt = await Deno.readTextFile("../config.dev.json")
 const config = JSON.parse(configTxt)
 const t = new Truestamp(config)
 
@@ -34,7 +34,8 @@ let newDoc
 try {
   newDoc = await t.createDocument({
     hash: nowHashBase64,
-    name: "sha2-256",
+    hashType: "sha2-256",
+    description: "This is a test document",
   })
   console.log(newDoc)
 } catch (error) {
@@ -71,7 +72,7 @@ const laterHashBase64 = laterHasher.toString("base64")
 try {
   const updatedDoc = await t.updateDocument(newDoc.id, {
     hash: laterHashBase64,
-    name: "sha2-256",
+    hashType: "sha2-256",
   })
   console.log(updatedDoc)
 } catch (error) {

@@ -19,8 +19,8 @@ const Truestamp = require("../../dist/truestamp.js")
 //   "accessToken": "...",
 //   "apiEnv": "development"
 // }
-const config = require("../config.json")
-// const config = require("../config.dev.json")
+// const config = require("../config.json")
+const config = require("../config.dev.json")
 
 // Instantiate and configure a client object 't'
 const t = new Truestamp({
@@ -47,7 +47,8 @@ async function asyncCall() {
 
     newDoc = await t.createDocument({
       hash: nowHash,
-      name: "sha2-256",
+      hashType: "sha2-256",
+      description: "This is a test document",
     })
     console.log(newDoc)
   } catch (error) {
@@ -72,7 +73,8 @@ async function asyncCall() {
 
     updatedDoc = await t.updateDocument(newDoc.id, {
       hash: nowHash,
-      name: "sha2-256",
+      hashType: "sha2-256",
+      description: "This is an updated test document",
     })
     console.log(updatedDoc)
   } catch (error) {
