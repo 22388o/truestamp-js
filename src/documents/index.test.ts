@@ -1,6 +1,6 @@
 // using 'var' here to avoid 'cannot re-declare block-scoped variable' err
 var nock = require("nock")
-var Truestamp = require("../../dist/truestamp.js")
+var Truestamp = require("../../dist/truestamp.cjs")
 
 describe("Documents resource", () => {
   test("createDocument returns a Document", async () => {

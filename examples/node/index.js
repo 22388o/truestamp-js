@@ -10,8 +10,8 @@ const Hashes = require("jshashes")
 // Remote lib via npm
 // const Truestamp = require("@truestamp/truestamp-js")
 
-// Local lib
-const Truestamp = require("../../dist/truestamp.js")
+// Local lib (must run 'npm run build' in root dir on each change)
+const Truestamp = require("../../dist/truestamp.cjs")
 
 // Create the 'examples/config.json' file, with this structure, to get started.
 //

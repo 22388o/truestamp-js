@@ -1,6 +1,10 @@
 {
     "compilerOptions": {
         "strict": true,
+        "module": "ESNext",
+        "target": "ESNext",
+        "declaration": true,
+        "moduleResolution": "Node",
     },
     "include": [
         "src/**/*"
@@ -10,7 +14,4 @@
         "**/*.test.ts",
         "examples/config.json"
     ],
-    "module": "ESNext",
-    "target": "ESNext",
-    "declaration": true
 }
