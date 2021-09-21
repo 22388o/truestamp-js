@@ -1,8 +1,20 @@
 import fetch from "isomorphic-unfetch"
 
-import { getApiBaseUriForEnv } from "./baseUtils"
+function getApiBaseUriForEnv(env: string): string {
+  const uri = {
+    development: "https://dev-api.truestamp.com/v1/",
+    staging: "https://staging-api.truestamp.com/v1/",
+    production: "https://api.truestamp.com/v1/"
+  }[env]
 
-type Config = {
+  if (!uri) {
+    throw new Error(`Unknown environment: ${env}`)
+  }
+
+  return uri
+}
+
+export type Config = {
   accessToken: string
   apiEnv?: string
 }
