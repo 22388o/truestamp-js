@@ -1,6 +1,6 @@
 /*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/en/configuration.html
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://jestjs.io/docs/configuration
  */
 
 export default {
@@ -13,7 +13,7 @@ export default {
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/private/var/folders/cg/q568zb_17fv6qx4r2lpl3g0w0000gn/T/jest_dx",
 
-  // Automatically clear mock calls and instances between every test
+  // Automatically clear mock calls, instances and results before every test
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
@@ -21,20 +21,18 @@ export default {
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
-  "collectCoverageFrom": [
-    "**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!**/coverage/**",
-    "!**/examples/**",
-    "!jest.config.js"
-  ],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
+  // coveragePathIgnorePatterns: [
+  //   "/node_modules/"
+  // ],
   coveragePathIgnorePatterns: [
-    "/node_modules/"
+    "/node_modules/",
+    "/dist/",
+    "/examples/",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
@@ -80,10 +78,10 @@ export default {
   // An array of file extensions your modules use
   // moduleFileExtensions: [
   //   "js",
-  //   "json",
   //   "jsx",
   //   "ts",
   //   "tsx",
+  //   "json",
   //   "node"
   // ],
 
@@ -101,6 +99,7 @@ export default {
 
   // A preset that is used as a base for Jest's configuration
   // preset: undefined,
+  preset: "ts-jest",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -108,7 +107,7 @@ export default {
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
 
-  // Automatically reset mock state between every test
+  // Automatically reset mock state before every test
   // resetMocks: false,
 
   // Reset the module registry before running each individual test
@@ -117,7 +116,7 @@ export default {
   // A path to a custom resolver
   // resolver: undefined,
 
-  // Automatically restore mock state between every test
+  // Automatically restore mock state and implementation before every test
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
@@ -144,7 +143,7 @@ export default {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "node",
+  // testEnvironment: "jest-environment-node",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -159,8 +158,12 @@ export default {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
+  // testPathIgnorePatterns: [
+  //   "/node_modules/"
+  // ],
   testPathIgnorePatterns: [
-    "/node_modules/"
+    '/node_modules/',
+    '/examples/',
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -170,7 +173,7 @@ export default {
   // testResultsProcessor: undefined,
 
   // This option allows use of a custom test runner
-  // testRunner: "jasmine2",
+  // testRunner: "jest-circus/runner",
 
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
   // testURL: "http://localhost",
@@ -199,3 +202,11 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
+
+
+
+// /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+// module.exports = {
+//   preset: 'ts-jest',
+//   testEnvironment: 'node',
+// };

@@ -1,6 +1,6 @@
 // using 'var' here to avoid 'cannot re-declare block-scoped variable' err
 var nock = require("nock")
-var Truestamp = require("../../dist/truestamp.cjs")
+import Truestamp from '../index'
 
 describe("Health resource", () => {
   test("getHealth returns a health status", async () => {
