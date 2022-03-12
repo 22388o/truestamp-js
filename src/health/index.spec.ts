@@ -1,5 +1,4 @@
-// using 'var' here to avoid 'cannot re-declare block-scoped variable' err
-var nock = require("nock")
+import nock from 'nock';
 import Truestamp from '../index'
 
 describe("Health resource", () => {

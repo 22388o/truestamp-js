@@ -1,5 +1,4 @@
-// using 'var' here to avoid 'cannot re-declare block-scoped variable' err
-var nock = require("nock")
+import nock from 'nock';
 import Truestamp from '../index'
 
 describe("Documents resource", () => {
@@ -60,7 +59,7 @@ describe("Documents resource", () => {
 
     const scope = nock("https://api.truestamp.com")
       .delete(`/v1/documents/${id}`)
-      .reply(204, null)
+      .reply(204, "")
 
     const c = new Truestamp({ accessToken: "XYZ" })
     let r = await c.deleteDocument(id)
