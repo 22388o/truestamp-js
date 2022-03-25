@@ -43,11 +43,11 @@
     <div x-data="loadLocalData()" x-init="clientFactory()">
       <h2>Config</h2>
 
-      <!-- Generate a new client with any updates to the accessToken -->
-      <p>Client : accessToken</p>
+      <!-- Generate a new client with any updates to the apiKey -->
+      <p>Client : apiKey</p>
       <input
         type="text"
-        x-model="accessToken"
+        x-model="apiKey"
         x-on:input.debounce.750ms="clientFactory()"
       />
 
@@ -70,49 +70,49 @@
         ><code x-text="JSON.stringify(getHealthResp, null, 4)"></code></pre>
       </div>
 
-      <!-- documents -->
-      <h2>POST /v1/documents</h2>
+      <!-- items -->
+      <h2>POST /v1/items</h2>
 
       <h3>Text</h3>
       <p>Enter some text to hash and submit it.</p>
 
-      <!-- modify this textarea to add `x-on:input.debounce.25ms="createDocumentUpdateHash()"` to allow autosubmit on every change -->
-      <textarea rows="4" cols="50" x-model="createDocumentText"></textarea>
+      <!-- modify this textarea to add `x-on:input.debounce.25ms="createItemUpdateHash()"` to allow autosubmit on every change -->
+      <textarea rows="4" cols="50" x-model="createItemText"></textarea>
       <br />
 
-      <button type="submit" @click="createDocumentUpdateHash()">
-        Create and Submit Document Hash
+      <button type="submit" @click="createItemUpdateHash()">
+        Create and Submit Item Hash
       </button>
 
-      <div x-show="createDocumentHash !== null">
+      <div x-show="createItemHash !== null">
         <h3>SHA2-256(Text)</h3>
-        <pre><code x-text="createDocumentHash"></code></pre>
+        <pre><code x-text="createItemHash"></code></pre>
       </div>
 
-      <div x-show="createDocumentResp !== null">
-        <h3>POST /documents API Response</h3>
+      <div x-show="createItemResp !== null">
+        <h3>POST /items API Response</h3>
         <div>
-          <pre><code x-text="JSON.stringify(createDocumentResp, null, 4)"></code></pre>
+          <pre><code x-text="JSON.stringify(createItemResp, null, 4)"></code></pre>
         </div>
       </div>
 
       <script>
         function loadLocalData() {
           return {
-            accessToken: "",
+            apiKey: "",
             apiEnv: "",
-            client: new Truestamp({ accessToken: this.accessToken }),
+            client: new Truestamp({ apiKey: this.apiKey }),
             getHealthResp: null,
-            createDocumentText: null,
-            createDocumentHash: null,
-            createDocumentResp: null,
+            createItemText: null,
+            createItemHash: null,
+            createItemResp: null,
             fetchConfig() {
               fetch("/examples/config.dev.json")
                 .then((res) => {
                   return res.json()
                 })
                 .then((data) => {
-                  this.accessToken = data.accessToken
+                  this.apiKey = data.apiKey
                   if (this.apiEnv === "") {
                     this.apiEnv = data.apiEnv || "production"
                   }
@@ -121,7 +121,7 @@
             clientFactory() {
               this.fetchConfig()
               let c = new Truestamp({
-                accessToken: this.accessToken,
+                apiKey: this.apiKey,
                 apiEnv: this.apiEnv,
               })
               console.log("client", c)
@@ -138,33 +138,32 @@
                   console.error(error), (this.getHealthResp = error.message)
                 })
             },
-            createDocumentUpdateHash() {
-              if (this.createDocumentText && this.createDocumentText !== "") {
-                var SHA256 = new Hashes.SHA256().hex(this.createDocumentText)
+            createItemUpdateHash() {
+              if (this.createItemText && this.createItemText !== "") {
+                var SHA256 = new Hashes.SHA256().hex(this.createItemText)
                 console.log(SHA256)
-                this.createDocumentHash = SHA256
-                this.createDocument()
+                this.createItemHash = SHA256
+                this.createItem()
               } else {
-                this.createDocumentHash = null
-                this.createDocumentResp = null
+                this.createItemHash = null
+                this.createItemResp = null
               }
             },
-            createDocument() {
+            createItem() {
               this.clientFactory()
               this.client
-                .createDocument({
-                  hash: this.createDocumentHash,
-                  hashType: "sha2-256",
-                  description: "Example Document",
+                .createItem({
+                  hash: this.createItemHash,
+                  hashType: "sha-256"
                 })
                 .then(
                   (data) => (
-                    console.log(data), (this.createDocumentResp = data)
+                    console.log(data), (this.createItemResp = data)
                   )
                 )
                 .catch((error) => {
                   console.error(error),
-                    (this.createDocumentResp = error.message)
+                    (this.createItemResp = error.message)
                 })
             },
           }

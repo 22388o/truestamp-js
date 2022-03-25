@@ -7,20 +7,13 @@
 
 ## Description
 
-A tiny zero-dependency Truestamp SDK written in Typescript that supports ES
+A zero-dependency Truestamp SDK written in Typescript that supports ES
 Modules, UMD, and CommonJS loaders and runs in Deno, Node.js, and modern
 browsers.
 
-## EXPERIMENTAL
-
-This software is still in development and is intended to be used by developers
-invited to create a Truestamp test account. If you'd like to learn more, or join
-the developer program, please visit
-[www.truestamp.com](https://www.truestamp.com).
-
 ## Features
 
-- Tiny library size
+- Small library size
 - No external dependencies
 - Built with Typescript
 - Promise based API
@@ -50,14 +43,14 @@ npm install @truestamp/truestamp-js --save
 ```
 
 Require the `@truestamp/truestamp-js` CommonJS module in your project and
-initialize it with your [accessToken](https://app.truestamp.com).
+initialize it with your [api key](https://www.truestamp.com/dashboard/keys).
 
 #### Node.js Example
 
 ```js
 const Truestamp = require("@truestamp/truestamp-js");
 
-const TruestampClient = new Truestamp({ accessToken: "%yourAccessToken%" });
+const TruestampClient = new Truestamp({ apiKey: "%yourApiKey%" });
 
 TruestampClient.getHealth()
   .then((data) => console.log(data))
@@ -73,7 +66,7 @@ and TypeScript that uses V8 and is built in Rust.
 
 Import the `@truestamp/truestamp-js` ESM module in your project via
 [SkyPack](https://www.skypack.dev) and initialize it with your
-[accessToken](https://app.truestamp.com).
+[apiKey](https://www.truestamp.com/dashboard/keys).
 
 SkyPack Package Info
 
@@ -92,18 +85,13 @@ Declarations](https://docs.skypack.dev/skypack-cdn/code/deno) for Deno.
 // Note the `?dts` param to provide the proper typings for Deno
 import Truestamp from "https://cdn.skypack.dev/@truestamp/truestamp-js?dts";
 
-const TruestampClient = new Truestamp({
-  accessToken: "%yourAccessToken%",
-});
+const TruestampClient = new Truestamp({ apiKey: "%yourApiKey%" });
 
 const hb = await TruestampClient.getHealth();
 console.log(hb);
 ```
 
 ### Browser (UMD)
-
-Warning: Do not expose your Truestamp access token in code shipped to browser
-clients over the web!
 
 You can use a `<script>` tag in the browser to load a specific version of the
 library from several supported CDN's. Replace the pinned version in the link
@@ -152,4 +140,4 @@ We expect all members of the community to respect our
 
 ## Legal
 
-Copyright © 2021 Truestamp Inc. All Rights Reserved.
+Copyright © 2021-2022 Truestamp Inc. All Rights Reserved.

@@ -2,11 +2,11 @@
 
 ## Examples Setup
 
-To run any of the demos you'll need an access token. Create the file `examples/config.json` to match the following JSON structure.
+To run any of the demos you'll need an API Key. Create the file `examples/config.json` to match the following JSON structure.
 
 ```json
 {
-  "accessToken": "..."
+  "apiKey": "..."
 }
 ```
 
@@ -26,7 +26,7 @@ You'll need to first install [Deno](https://deno.land/)
 
 ```sh
 cd examples/deno
-deno run [--reload] --allow-net --allow-read index.ts
+deno run --allow-net --allow-read index.ts
 ```
 
 ## Node.js

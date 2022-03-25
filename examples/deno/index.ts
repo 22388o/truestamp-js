@@ -24,73 +24,48 @@ try {
   console.error(error)
 }
 
-// submit a new document
+// submit a new item
 const now = new Date()
 const nowHasher = createHash("sha256")
 nowHasher.update(now.toISOString())
-const nowHashBase64 = nowHasher.toString("base64")
+const nowHashHex = nowHasher.toString("hex")
 
-let newDoc
+let newItem
 try {
-  newDoc = await t.createDocument({
-    hash: nowHashBase64,
-    hashType: "sha2-256",
-    description: "This is a test document",
+  newItem = await t.createItem({
+    hash: nowHashHex,
+    hashType: "sha-256"
   })
-  console.log(newDoc)
+  console.log(newItem)
 } catch (error) {
   console.error(error)
 }
 
-if (!newDoc) {
-  console.log("No new document created")
+if (!newItem) {
+  console.log("No new item created")
   Deno.exit(1)
 }
 
-// retrieve document
+// retrieve item
 try {
-  const newDocRetrieved = await t.getDocument(newDoc.id)
-  console.log(newDocRetrieved)
+  const newItemRetrieved = await t.getItem(newItem.id)
+  console.log(newItemRetrieved)
 } catch (error) {
   console.error(error)
 }
 
-// list all documents owned by this user
-// try {
-//   const allDocs = await t.getAllDocuments({ start: "2021-04-21" })
-//   console.log(allDocs)
-// } catch (error) {
-//   console.error(error)
-// }
-
-// update document
+// update item
 const later = new Date()
 const laterHasher = createHash("sha256")
 laterHasher.update(later.toISOString())
-const laterHashBase64 = laterHasher.toString("base64")
+const laterHashHex = laterHasher.toString("hex")
 
 try {
-  const updatedDoc = await t.updateDocument(newDoc.id, {
-    hash: laterHashBase64,
-    hashType: "sha2-256",
+  const updatedItem = await t.updateItem(newItem.id, {
+    hash: laterHashHex,
+    hashType: "sha-256",
   })
-  console.log(updatedDoc)
-} catch (error) {
-  console.error(error)
-}
-
-// get all versions for doc
-try {
-  const docVersions = await t.getDocumentVersions(newDoc.id)
-  console.log(docVersions)
-} catch (error) {
-  console.error(error)
-}
-
-// delete document
-try {
-  const deletedDoc = await t.deleteDocument(newDoc.id)
-  console.log(deletedDoc) // should be 204 no response empty {}
+  console.log(updatedItem)
 } catch (error) {
   console.error(error)
 }

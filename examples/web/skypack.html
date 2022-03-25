@@ -28,7 +28,7 @@
         let config = await configResp.json()
 
         let t = new Truestamp({
-          accessToken: config.accessToken,
+          apiKey: config.apiKey,
           apiEnv: config.apiEnv,
         })
 
@@ -37,8 +37,8 @@
         let hashHex = new Hashes.SHA256().hex("Truestamp rocks!")
         console.log(hashHex)
 
-        let newDoc = await t.createDocument({ hash: hashHex, name: "sha2-256" })
-        console.log(newDoc)
+        let newItem = await t.createItem({ hash: hashHex, hashType: "sha-256" })
+        console.log(newItem)
       }
 
       main()

@@ -16,7 +16,7 @@ const Truestamp = require("../../dist/truestamp.cjs")
 // Create the 'examples/config.json' file, with this structure, to get started.
 //
 // {
-//   "accessToken": "...",
+//   "apiKey": "...",
 //   "apiEnv": "development"
 // }
 // const config = require("../config.json")
@@ -24,7 +24,7 @@ const config = require("../config.dev.json")
 
 // Instantiate and configure a client object 't'
 const t = new Truestamp({
-  accessToken: config.accessToken,
+  apiKey: config.apiKey,
   apiEnv: config.apiEnv
 })
 
@@ -37,62 +37,52 @@ async function asyncCall() {
     console.error(error)
   }
 
-  let newDoc
+  let newItem
   try {
-    console.log(`POST /v1/documents`)
+    console.log(`POST /v1/items`)
     let now = new Date()
     let nowHash = new Hashes.SHA256().hex(now.toISOString())
     console.log(now.toISOString())
     console.log(nowHash)
 
-    newDoc = await t.createDocument({
+    newItem = await t.createItem({
       hash: nowHash,
-      hashType: "sha2-256",
-      description: "This is a test document",
+      hashType: "sha-256",
     })
-    console.log(newDoc)
+    console.log(newItem)
   } catch (error) {
     console.error(error)
   }
 
   try {
-    console.log(`GET /v1/documents/${newDoc.id}`)
-    const d = await t.getDocument(newDoc.id)
-    console.log(d)
+    console.log(`GET /v1/items/${newItem.id}`)
+    const item = await t.getItem(newItem.id)
+    console.log(item)
   } catch (error) {
     console.error(error)
   }
 
-  let updatedDoc
+  let updatedItem
   try {
-    console.log(`PUT /v1/documents/${newDoc.id}`)
+    console.log(`PUT /v1/items/${newItem.id}`)
     let now = new Date()
     let nowHash = new Hashes.SHA256().hex(now.toISOString())
     console.log(now.toISOString())
     console.log(nowHash)
 
-    updatedDoc = await t.updateDocument(newDoc.id, {
+    updatedItem = await t.updateItem(newItem.id, {
       hash: nowHash,
-      hashType: "sha2-256",
-      description: "This is an updated test document",
+      hashType: "sha-256",
     })
-    console.log(updatedDoc)
+    console.log(updatedItem)
   } catch (error) {
     console.error(error)
   }
 
   try {
-    console.log(`GET /v1/documents/${updatedDoc.id}`)
-    const dr = await t.getDocument(updatedDoc.id)
+    console.log(`GET /v1/items/${updatedItem.id}`)
+    const dr = await t.getItem(updatedItem.id)
     console.log(dr)
-  } catch (error) {
-    console.error(error)
-  }
-
-  try {
-    console.log(`DELETE /v1/documents/${updatedDoc.id}`)
-    let d = await t.deleteDocument(updatedDoc.id)
-    console.log(d)
   } catch (error) {
     console.error(error)
   }

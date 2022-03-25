@@ -1,5 +1,5 @@
 import { Health } from "./health"
-import { Documents } from "./documents"
+import { Items } from "./items"
 import { Keys } from "./keys"
 import { Base } from "./base"
 export type { Config } from "./base"
@@ -18,7 +18,7 @@ function applyMixins(derivedCtor: any, baseCtors: any[]) {
 }
 
 class Truestamp extends Base { }
-interface Truestamp extends Health, Documents, Keys { }
-applyMixins(Truestamp, [Health, Documents, Keys])
+interface Truestamp extends Health, Items, Keys { }
+applyMixins(Truestamp, [Health, Items, Keys])
 
 export default Truestamp

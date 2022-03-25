@@ -9,7 +9,7 @@ describe("Keys resource", () => {
       .post("/v1/apikeys")
       .reply(201, mockResp)
 
-    const TruestampClient = new Truestamp({ accessToken: "XYZ" })
+    const TruestampClient = new Truestamp({ apiKey: "XYZ" })
     let r = await TruestampClient.createApiKey({
       refreshToken: "myrefreshtoken",
       description: "mydescription",

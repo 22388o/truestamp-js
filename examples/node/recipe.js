@@ -1,33 +1,45 @@
 const crypto = require("crypto")
 
-const Truestamp = require("@truestamp/truestamp-js")
+// Remote lib via npm
+// const Truestamp = require("@truestamp/truestamp-js")
+
+// Local lib (must run 'npm run build' in root dir on each change)
+const Truestamp = require("../../dist/truestamp.cjs")
+
+// Create the 'examples/config.json' file, with this structure, to get started.
+//
+// {
+//   "apiKey": "...",
+//   "apiEnv": "development"
+// }
+// const config = require("../config.json")
+const config = require("../config.dev.json")
 
 const tsc = new Truestamp({
-  accessToken:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik16ZzNORFpDUlRRME5EazROakZETkRJNE1EY3dPVEpCTnpoR01FTkZOVFZCTXpCRFEwTXpNQSJ9.eyJpc3MiOiJodHRwczovL3RydWVzdGFtcC1kZXYuYXV0aDAuY29tLyIsInN1YiI6ImpNdk1COHU1eG0xNjBRc0JSbnUxdFJwejU1TGl2U1B2QGNsaWVudHMiLCJhdWQiOiJodHRwczovL2Rldi1hcGkudHJ1ZXN0YW1wLmNvbS8iLCJpYXQiOjE2MzA1MjM3NTksImV4cCI6MTYzMDYxMDE1OSwiYXpwIjoiak12TUI4dTV4bTE2MFFzQlJudTF0UnB6NTVMaXZTUHYiLCJzY29wZSI6ImNyZWF0ZTpkb2N1bWVudHMgcmVhZDpkb2N1bWVudHMgdXBkYXRlOmRvY3VtZW50cyBkZWxldGU6ZG9jdW1lbnRzIHJlYWQ6Y29tbWl0bWVudHMgY3JlYXRlOnRva2VucyByZWFkOmhlYXJ0YmVhdHMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMiLCJwZXJtaXNzaW9ucyI6WyJjcmVhdGU6ZG9jdW1lbnRzIiwicmVhZDpkb2N1bWVudHMiLCJ1cGRhdGU6ZG9jdW1lbnRzIiwiZGVsZXRlOmRvY3VtZW50cyIsInJlYWQ6Y29tbWl0bWVudHMiLCJjcmVhdGU6dG9rZW5zIiwicmVhZDpoZWFydGJlYXRzIl19.AnQKhbcHUK_IgIrfWG8Z50y-OLUWCxdEp1GnzXGEAcjWhq608CH-fAR8IRcDJFUgQU8ibi5X6ucSVPRJny0YArgD8GjrpdqF31Vs7b-DF7vOyETwKOO0LoXHwp1FTDE99Pbh0-tf2F8pY39cszTydRZr7FaQCouwsBYHIVyF9Du4V7IzMEjOC1tXzEQW2f-iBMOytZTGqGBduFGU41DhjEBTi2LzIKxgcJ_LHTOQBwa4wo2O2zEJtw2YAhocA72VFuVJs1Rz0YQtbAVGMC6z97mHHHpIqqZhL6xUVqdkOPJBubFiWrbdlkaaXlcxq8TuHrPwACEB6x5PfASReZzA8w",
-  apiEnv: 'development'
+  apiKey: config.apiKey,
+  apiEnv: config.apiEnv,
 })
 
-const createDocWithMessage = async (msg) => {
-  let newDoc
+const createItemWithMessage = async (msg) => {
+  let newItem
 
   const msgHash = crypto.createHash("sha256").update(msg).digest("hex")
 
   try {
-    newDoc = await tsc.createDocument({
+    newItem = await tsc.createItem({
       hash: msgHash,
-      name: "sha2-256",
+      hashType: "sha-256",
     })
   } catch (error) {
     console.error(error)
   }
 
-  return newDoc
+  return newItem
 }
 
-createDocWithMessage("Truestamp rocks!")
-  .then((doc) => {
-    console.log(JSON.stringify(doc, null, 2))
+createItemWithMessage("Truestamp rocks!")
+  .then((itemEnvelope) => {
+    console.log(JSON.stringify(itemEnvelope, null, 2))
   })
   .catch((error) => {
     console.error(error)

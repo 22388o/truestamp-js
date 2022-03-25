@@ -9,7 +9,7 @@ describe("Health resource", () => {
       .get("/v1/health")
       .reply(200, mockResp)
 
-    const TruestampClient = new Truestamp({ accessToken: "XYZ" })
+    const TruestampClient = new Truestamp({ apiKey: "XYZ" })
     let r = await TruestampClient.getHealth()
 
     expect(r).toEqual(mockResp)
