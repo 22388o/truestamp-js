@@ -2,7 +2,7 @@
   "name": "@truestamp/truestamp-js",
   "type": "module",
   "amdName": "Truestamp",
-  "version": "0.5.1",
+  "version": "0.9.0",
   "author": "Truestamp <support@truestamp.com> (https://www.truestamp.com)",
   "description": "A tiny zero-dependency Truestamp SDK written in Typescript that supports ES Modules, UMD, and CommonJS loaders and runs in Deno, Node.js, and modern browsers",
   "repository": {
